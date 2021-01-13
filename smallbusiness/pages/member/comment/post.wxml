@@ -1,0 +1,52 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">订单评价</view>
+</cu-custom>
+<view class="page-view">
+  <view class="grade">
+    <view class="item-title"><text class="cuIcon-titles thumb-color"></text>店铺评价</view>
+    <view class="cu-form-group">
+      <view class="title">描述相符</view>
+      <view>
+        <text wx:for="{{5}}" wx:key="store" class="cuIcon-favorfill lg {{postData.store>=index?'thumb-color':'text-gray'}}" bindtap="select" data-type="store" data-index="{{index}}"></text>
+      </view>
+    </view>
+  </view>
+  <view class="grade">
+    <view class="item-title"><text class="cuIcon-titles thumb-color"></text>拎手评价</view>
+    <view class="cu-form-group">
+      <view class="title">送货速度</view>
+      <view>
+        <text wx:for="{{5}}" wx:key="speed" class="cuIcon-favorfill lg {{postData.speed>=index?'thumb-color':'text-gray'}}" bindtap="select" data-type="speed" data-index="{{index}}"></text>
+      </view>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">服务态度</view>
+      <view>
+        <text wx:for="{{5}}" wx:key="server" class="cuIcon-favorfill lg {{postData.server>=index?'thumb-color':'text-gray'}}" bindtap="select" data-type="server" data-index="{{index}}"></text>
+      </view>
+    </view>
+  </view>
+  <view class="grade-content">
+    <view class="item-title"><text class="cuIcon-titles thumb-color"></text>评价内容</view>
+    <view class="cu-form-group">
+      <textarea name="content" id="content" maxlength="202" data-type="content" value="{{postData.content}}" bindinput="onTextAreaChange" placeholder="订单评价"></textarea>
+    </view>
+  </view>
+  <view class="image">
+    <view class="item-title"><text class="cuIcon-titles thumb-color"></text>图片</view>
+    <view class="cu-form-group">
+      <view class="grid col-4 grid-square flex-sub">
+        <view class="bg-img" wx:for="{{imgs}}" wx:key="imgs" bindtap="ViewImage" data-url="{{imgs[index]}}">
+          <image src='{{imgs[index]}}' mode='aspectFill'></image>
+          <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+            <text class="cuIcon-close"></text>
+          </view>
+        </view>
+        <view class="solids" bindtap="ChooseImage" wx:if="{{imgs.length<4}}">
+          <text class="cuIcon-cameraadd"></text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="submit-btn postBtn" bindtap="onSubmit">提交</view>

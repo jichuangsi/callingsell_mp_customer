@@ -1,0 +1,36 @@
+.cartView{width: 690rpx;margin: 26rpx auto 0 auto;}
+/*购物车列表*/
+.cartView .cartList{padding: 15rpx;background: var(--white);border-radius: 20rpx;}
+.cartList .listItem{position: relative;}
+/*购物车列表 - 商店相关*/
+.listItem .store{height: 62rpx;line-height: 62rpx;}
+.listItem .selectStore,.listItem .selectGood{flex: .6;}
+/* .listItem .selectStore text{font-size:36rpx;} */
+.listItem .storeName{flex: 6;color:#343434;}
+.listItem .clearStore{flex:1.2;color:#a9a9a9}
+/*购物车列表 - 商品相关*/
+.listItem .goods{margin: 10rpx 0 30rpx 0;}
+.listItem .goodspec{flex: 7.2;position: relative;}
+.goodspec .goodimg{float:left;width: 120rpx;height: 120rpx;margin-right: 26rpx;}
+.goodspec .goodimg image{width:120rpx;height: 120rpx;}
+.goodspec .goodimg:after{clear: both;}
+.goodspec .title{color:#343434;font-size: 28rpx;font-weight: bold;}
+.goodspec .spec{color:#9A9A9A;font-size: 22rpx;}
+.goodspec .num{display: inline-block;position: absolute;bottom: 0;color:#9A9A9A;}
+.goodspec .price{position: absolute;bottom: 0;right: 0;}
+.goodspec .price text{font-weight: bold;}
+.goodspec .price text:nth-child(1){color:#9A9A9A;margin-right: 20rpx;text-decoration: line-through;}
+.goodspec .price text:nth-child(2){margin-right: 24px;}
+/*包装费、运费、优惠相关*/
+.listItem .otherFee{width: 580rpx;}
+.otherFee .packing{ margin: 0 10rpx;}
+.otherFee .packing view:nth-child(1){display: inline-block;}
+.otherFee .packing view:nth-child(2){float:right;}
+/*猜你喜欢*/
+
+.storeList .guessTitle{font-size: 32rpx;font-weight: bold;color: #333333;display: table;width: auto;white-space: nowrap;border-spacing: 60rpx 0;margin:20rpx 40rpx 20rpx 40rpx;}
+.storeList .guessTitle::before,.storeList .guessTitle::after{display: table-cell;content: "";width: 50%;background: linear-gradient(#ccc, #ccc) repeat-x center;background-size: 1rpx 1rpx;}
+@import "../template/storelist.wxss";
+
+
+

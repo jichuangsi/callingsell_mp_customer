@@ -1,0 +1,42 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">{{id?'修改':'添加'}}地址</view>
+</cu-custom>
+<view class="page-view">
+  <view class="form-view">
+    <view class="cu-form-group">
+      <view class="title">收货人</view>
+      <input placeholder="输入收货人姓名" value="{{postData.username}}" data-type="username" bindinput="onDataChange"></input>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">手机号码</view>
+      <input placeholder="输入手机号码" value="{{postData.phone}}" data-type="phone" bindinput="onDataChange"></input>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">所在地区</view>
+      <picker mode="region" bindchange="RegionChange" value="{{postData.region}}" custom-item="{{customItem}}">
+        <view class="picker {{postData.region!=''?'':'placeholder'}}">
+          {{postData.region!=''?postData.region[0]+'，'+postData.region[1]+'，'+postData.region[2]:'请选择所在地区'}}
+        </view>
+      </picker>
+    </view>
+    <view class="red-group">
+      <view class="title">*请确认填写的地址信息是否准确</view>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">详细地址</view>
+      <input placeholder="输入详细地址" data-type="address" value="{{postData.address}}" bindinput="onDataChange"></input>
+    </view>
+    <!-- <view class="cu-form-group">
+      <view class="title">具体位置</view>
+      <input placeholder="输入小区+楼栋号+单元室" value="{{postData.address1}}" data-type="address1" bindinput="onDataChange"></input>
+    </view> -->
+  </view>
+  <view class="is-default">
+    <view class="cu-form-group">
+      <view class="title">设置为默认收货地址</view>
+      <switch class="thumb-color sm" bindchange="isDefault" checked="{{postData.isDefault}}"></switch>
+    </view>
+  </view>
+  <view class="submit-btn" bindtap="onSubmit">保存</view>
+</view>
+<!-- <include src="../../common/dialog.wxml"></include> -->

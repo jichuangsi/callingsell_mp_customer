@@ -1,0 +1,10 @@
+.page-view{padding:30rpx;}
+.select-item{display: inline-block; flex: 1; padding:30rpx; width:330rpx; height:300rpx;background:#fff;border-radius: 10rpx; text-align: center;}
+.select-item+.select-item{margin-left:30rpx;}
+.select-item .item-title{font-size: 32rpx;color:var(--balck);font-weight: bold;}
+.select-item .item-icon{width:88rpx;height:88rpx;margin:45rpx 0 20rpx 0;}
+.select-item .item-btn{width:150rpx;height:60rpx;line-height:60rpx;margin:0 auto; color:var(--thumb-color);font-size:28rpx; font-weight: bold; border:1px solid var(--thumb-color);border-radius: 30rpx;}
+.conter{padding: 30rpx;font-size: 24rpx;}
+.title{font-weight: 600;line-height: 46rpx;}
+.text{text-indent: 2em;color:#666666;}
+.center {text-align: center;}

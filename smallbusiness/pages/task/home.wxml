@@ -1,0 +1,290 @@
+<view class="task-component">
+  <cu-custom bgColor="bg-white" isBack="true">
+    <view slot="content">
+      <!-- <view slot="content" class="head-tab" style="height:{{Custom.height}}px;line-height:{{Custom.height}}px;margin-left:calc(750rpx - {{Custom.right}}px);top:{{StatusBar}}px;">
+        <scroll-view scroll-x class="bg-white nav text-center">
+          <view class="cu-item {{1==TabCur?' cur':''}}" bindtap="_tabSelect" data-id="1">
+            发布任务
+          </view>
+          <view class="cu-item {{2==TabCur?' cur':''}}" bindtap="_tabSelect" data-id="2">
+            抢单大厅
+          </view>
+        </scroll-view>
+      </view> -->
+    </view>
+  </cu-custom>
+</view>
+<view class="page-view">
+  <!-- head -->
+  <view class="head-tab" style="height:{{Custom.height}}px;line-height:{{Custom.height}}px;margin-left:calc(750rpx - {{Custom.right}}px);top:{{StatusBar}}px;">
+    <scroll-view scroll-x class="bg-white nav text-center">
+      <!-- <view class="cu-item {{1==TabCur?' cur':''}}" bindtap="_tabSelect" data-id="1">
+        发布任务
+      </view> -->
+      <view class="cu-item {{2==TabCur?' cur':''}}" bindtap="_tabSelect" data-id="2">
+        抢单大厅
+      </view>
+    </scroll-view>
+  </view>
+  <!-- <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" bindcontroltap="controltap" circles="{{circles}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: {{view.Height}}px;"></map> -->
+  <block wx:if="{{TabCur==1}}">
+    <view class="map-view padding-bottom">
+      <view class="task-cate flex justify-center margin-lr bg-white">
+        <view class="task-view {{task==1?'cur':''}}" bindtap="_selectTask" data-task="1">
+          <view class="task-name">我要买</view>
+          <view class="good-cate">美食/商品/果蔬</view>
+        </view>
+        <view class="task-view {{task==2?'cur':''}}" bindtap="_selectTask" data-task="2">
+          <view class="task-name">帮我送</view>
+          <view class="good-cate">文件/手机/鲜花</view>
+        </view>
+        <view class="task-view {{task==3?'cur':''}}" bindtap="_selectTask" data-task="3">
+          <view class="task-name">帮我取</view>
+          <view class="good-cate">钥匙/发票/衣服</view>
+        </view>
+      </view>
+      <block wx:if="{{task==1}}">
+        <view class="task-content margin bg-white">
+          <view class="task-title">填写想要购买的商品</view>
+          <view class="cu-form-group">
+            <textarea name="content" focus="{{textareaFocus}}" id="content" maxlength="202" data-type="content" value="{{postData.content}}" bindinput="onTextAreaChange" placeholder="想买什么，就买什么！请填写商品名称和数量"></textarea>
+          </view>
+        </view>
+        <view class="task-address margin bg-white">
+          <view class="purchase-address flex align-center">
+            <text class="address-icon-1">买</text>
+            <!-- <view class="address-info">在哪里买呢？</view> -->
+            <input type="text" data-type="addr" class="address-info" value="{{postData.addr}}" placeholder="在哪里买呢?" bindinput="onTextAreaChange"></input>
+            <!-- <text class="address-tips">常用</text> -->
+          </view>
+          <view class="delivery-address flex align-center"  data-type="address" bindtap="showModal">
+            <text class="address-icon-2">收</text>
+            <view class="address-info">
+              <!-- <view>环球都会广场</view>
+              <view class="phone">136-2888-8888</view> -->
+              <view>{{postData.addressid?addressinfo.addr:'请选择收货地址'}}</view>
+              <view class="phone">{{postData.addressid?addressinfo.mobile:''}}</view>
+            </view>
+            <!-- <text class="address-tips">常用</text> -->
+          </view>
+        </view>
+        <view class="cu-list menu sm-border margin bg-white">
+          <view class="cu-item arrow">
+            <view class="content text-black">
+              <text class="cuIcon-time"></text>购买时间
+            </view>
+            <view class="action buy-time">立即购买</view>
+          </view>
+          <view class="cu-item arrow">
+            <view class="content text-black">
+              <text class="cuIcon-tag" style="transform: rotate(180deg);"></text>商品价格
+            </view>
+            <view class="action">预付或凭拎手小票线下支付</view>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="task-address margin bg-white">
+          <view class="purchase-address flex align-center">
+            <text class="address-icon-1">{{task==2?'发':'取'}}</text>
+            <view class="address-info" wx:if="{{task==2}}">
+              <view>环球都会广场</view>
+              <view class="phone">136-2888-8888</view>
+            </view>
+            <view class="address-info" wx:else>要送到哪里呢？</view>
+            <!-- <text class="address-tips">常用</text> -->
+          </view>
+          <view class="delivery-address flex align-center">
+            <text class="address-icon-2">收</text>
+            <view class="address-info" wx:if="{{task==3}}">
+              <view>环球都会广场</view>
+              <view class="phone">136-2888-8888</view>
+            </view>
+            <view class="address-info" wx:else>在哪里取呢？</view>
+            <!-- <text class="address-tips">常用</text> -->
+          </view>
+        </view>
+        <view class="cu-list menu sm-border margin bg-white">
+          <view class="cu-item arrow">
+            <view class="content text-black">
+              <text class="cuIcon-form" style="text-center:left;"></text>物品信息
+            </view>
+            <!-- <view class="action buy-time">立即购买</view> -->
+          </view>
+        </view>
+        <view class="task-remarks margin padding bg-white">
+          <view class="task-title"><text class="cuIcon-edit"></text> 订单备注</view>
+          <view class="cu-form-group">
+            <textarea name="remarks" id="remarks" maxlength="202" data-type="remarks" value="{{postData.remarks}}" bindinput="onTextAreaChange" placeholder="备注说点什么吧"></textarea>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class="cu-modal bottom-modal address-modal {{selectAddressModal?'show':''}}" > <!-- catchtouchmove='ture' -->
+      <view class="cu-dialog">
+        <view class="cu-bar bg-white flex justify-end">
+          <view class="content">请选择地址</view>
+          <view class="action" bindtap="hideModal" data-type="address">
+            <text class="cuIcon-close text-gray"></text>
+          </view>
+        </view>
+        <view class="padding">
+          <view class="address-list">
+            <scroll-view scroll-y="true" bindscrolltoupper="" bindscrolltolower="" bindscroll="">
+              <block wx:for="{{address}}" wx:key="address">
+              <view class="list-item flex justify-between align-center bg-white">
+                <!-- <view class="checkbox-view" bindtap="selectAddress" data-id="{{item.addr_id}}">
+                  <checkbox-group><checkbox class="round thumb-color" value="{{item.addr_id}}"></checkbox></checkbox-group>
+                </view> -->
+                <view class="address-view" bindtap="selectAddress" data-id="{{item.addr_id}}">
+                  <view class="contact">{{item.name}} {{item.mobile}}</view>
+                  <view class="text-cut address margin-top-xs">{{item.addr}}</view>
+                </view>
+                <view class="edit-view" bindtap="editAddress" data-id="{{item.addr_id}}"><text class="cuIcon-post"></text></view>
+              </view>
+              </block>
+            </scroll-view>
+          </view>
+          <view bindtap="{{0?'':'goAddAddress'}}" class="btn-view margin-top">{{0?'确定':'新增地址'}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="bottom-btn-view">
+      <view class="bottom-btn flex justify-center align-center">
+        <view class="info-cost bg-black flex justify-center align-center">
+          起步价<text class="text-price">10.00</text>元
+        </view>
+        <view class="go-pay bg-thumb" bindtap="_goPay"><navigator>去结算</navigator></view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="order-hall-tab flex align-center bg-white">
+      <view class="tab-item {{hallTabStatus==1?'cur':''}}" bindtap="_hallTabSelect" data-status="1"><text>新任务</text></view>
+      <view class="tab-item {{hallTabStatus==2?'cur':''}}" bindtap="_hallTabSelect" data-status="2"><text>配送中</text></view>
+      <view class="tab-item {{hallTabStatus==3?'cur':''}}" bindtap="_hallTabSelect" data-status="3"><text>已完成</text></view>
+    </view>
+     <scroll-view style="height: 100vh;" scroll-y="true" bindscrolltoupper="" bindscrolltolower="scrollY" bindscroll="" wx:if="{{noData==0}}">
+      <block>
+        <view class="hall-missions-list margin">
+          <view class="mission-item bg-white" wx:for="{{orderList}}" wx:key="orderList">
+            <view class="mission-item-info">
+              <view class="flex justify-between align-center">
+                <view wx:if="{{0}}"><text class="cuIcon-timefill"></text><text class="limit-time">--分钟内</text>送达</view>
+                <view>配送费 <text class="mission-price">{{item.logistics_price}}</text> 元</view>
+              </view>
+              <view>
+                <text class="distance"></text>
+                <view class="purchase-address flex align-center">
+                  <text class="address-icon-1">取</text>
+                  <view class="address-info">
+                    <view>{{item.shop_name}}</view>
+                    <view>{{item.shop_addr}}</view>
+                    <view class="phone">{{item.shop_mobile}}</view>
+                  </view>
+                </view>
+                <view class="delivery-address flex align-center">
+                  <text class="address-icon-2">收</text>
+                  <view class="address-info">
+                    <view>{{item.addrInfo.province}}{{item.addrInfo.city}}{{item.addrInfo.area}} {{item.addr}} </view>
+                    <view class="phone">{{item.mobile}}</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <view class="get-order-btn" bindtap="_getOrder" data-id="{{item.order_id}}" data-typeid="{{item.type_order_id}}" data-status="{{item.status}}">{{item.status==1?'抢单':item.status==2?'确认送达':'已完成'}}</view>
+          </view>
+        </view>
+      </block>
+      </scroll-view>
+    <block wx:if="{{noData}}">
+        <view class="none-data">
+          <view class="no-data-img" style="background:url({{staticurl}}no-data.png) no-repeat;"></view>
+          <text class="no-data-text">暂无数据</text>
+        </view>
+      </block>
+    <!-- <block wx:elif="{{hallTabStatus==2}}">
+      <view class="hall-missions-list margin">
+        <view class="mission-item bg-white" wx:for="{{2}}">
+          <view class="mission-item-info">
+            <view class="flex justify-between align-center">
+              <view><text class="cuIcon-timefill"></text><text class="limit-time">30分钟内</text>送达</view>
+              <view><text class="mission-price">5.00</text>元</view>
+            </view>
+            <view>
+              <text class="distance"></text>
+              <view class="purchase-address flex align-center">
+                <text class="address-icon-1">取</text>
+                <view class="address-info">
+                  <view>麦当劳麦乐送（广州天河店）</view>
+                  <view class="phone">广州市天河区金慧路52号</view>
+                </view>
+              </view>
+              <view class="delivery-address flex align-center">
+                <text class="address-icon-2">收</text>
+                <view class="address-info">
+                  <view>环球都会广场</view>
+                  <view class="phone">136-2888-8888</view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="get-order-btn">开始配送</view>
+        </view>
+      </view>
+    </block> -->
+    <!-- <block wx:else>
+      <view class="hall-missions-list margin">
+        <view class="mission-item bg-white" wx:for="{{2}}">
+          <view class="mission-item-info">
+            <view class="flex justify-between align-center">
+              <view><text class="cuIcon-timefill"></text><text class="limit-time">30分钟内</text>送达</view>
+              <view><text class="mission-price">5.00</text>元</view>
+            </view>
+            <view>
+              <text class="distance"></text>
+              <view class="purchase-address flex align-center">
+                <text class="address-icon-1">取</text>
+                <view class="address-info">
+                  <view>麦当劳麦乐送（广州天河店）</view>
+                  <view class="phone">广州市天河区金慧路52号</view>
+                </view>
+              </view>
+              <view class="delivery-address flex align-center">
+                <text class="address-icon-2">收</text>
+                <view class="address-info">
+                  <view>环球都会广场</view>
+                  <view class="phone">136-2888-8888</view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="get-order-btn">确认送达</view>
+        </view>
+      </view>
+    </block> -->
+  </block>
+</view>
+<!-- <view class="cu-modal {{showDialogModal?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content"></view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="tips">
+      <view class="tips-icon"><image src="/images/success.png"></image></view>
+      <view class="tips-title">反馈成功</view>
+      <view class="tips-content">
+        <text>我们已经收到您的反馈</text>
+        <text>将会尽快处理</text>
+      </view>
+    </view>
+    <view class="cu-bar bg-white justify-center" style="height:150rpx;">
+      <view class="action btn-view">
+        <button class="cu-btn bg-thumb" bindtap="hideModal">我知道了</button>
+      </view>
+    </view>
+  </view>
+</view> -->

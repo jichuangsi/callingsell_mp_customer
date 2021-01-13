@@ -1,0 +1,15 @@
+<cu-custom bgColor="bg-white">
+  <view slot="content">商家列表1</view>
+</cu-custom>
+<view class="page-view">
+  <include src="../common/search.wxml"></include>
+  <view class="storeView">
+    <view class="storeList">
+      <import src='../template/storelist.wxml' />
+      <block wx:for="{{storeList}}" wx:key="storeList" wx:for-item="store">
+        <template is="storelist" data="{{...store}}"></template>
+      </block>
+    </view>
+  </view>
+</view>
+<!-- <include src="../common/tabbar.wxml"></include> -->

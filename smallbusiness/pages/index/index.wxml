@@ -1,0 +1,58 @@
+<!-- <home wx:if="{{PageCur=='home'}}"></home> -->
+<store wx:if="{{PageCur=='store'}}"></store>
+<task wx:if="{{PageCur=='task'}}"></task>
+<subscribe wx:if="{{PageCur=='subscribe'}}"></subscribe>
+<cart wx:if="{{PageCur=='cart'}}"></cart>
+<member wx:if="{{PageCur=='member'}}" TabCur="{{TabCur}}"></member>
+<view wx:if="{{PageCur=='home'}}" class="home-page"> 
+  <cu-custom bindtap="goUrl" data-url="/pages/member/address/checkindex">
+    <view slot="content" class="flex"><view class="text-cut"><text class="cuIcon-location"></text>{{locationInfo.address?locationInfo.address:'正在获取地址'}}</view><text class="cuIcon-right"></text></view>
+  </cu-custom>
+  <!-- 页面中间部分 -->
+  <view class="page-view">
+    <!-- 搜索框 -->
+    <include src="../common/search.wxml"></include>
+    <!-- 轮播、导航按钮、公告、推荐列表 -->
+    <view class="content-view">
+      <view class="swiper-view">
+        <swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+          <swiper-item wx:for="{{swiperList}}" wx:key="swiperList">
+            <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+            <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+          </swiper-item>
+        </swiper>
+      </view>
+
+      <!-- nav 导航栏 -->
+      <view class="cu-list grid col-{{navCol}} {{navBorder?'':'no-border'}} navView">
+        <view class="cu-item" wx:for="{{iconList}}" wx:key="iconList" wx:if="{{index<navCol*2}}" bindtap="{{item.url?'':'ttt'}}" data-type="{{item.icon}}">
+          <navigator hoverClass="none" openType="navigate" url="{{item.url}}" >
+          <view style="width:88rpx;height:88rpx;margin:0 auto;"><image src="/images/nav/nav-{{index<9?'0'+(index+1):(index+1)}}.png" style="width:100%;height:100%;"></image></view>
+          <text>{{item.name}}</text>
+          </navigator>
+        </view>
+      </view>
+      <!-- notice 公告 -->
+      <view class="notice-view">
+        <view class="flex">
+          <view class="flex-sub"><text class="cuIcon-notification"></text></view>
+          <view class="notice-title text-cut">系统公告：{{notice[0].title}}</view>
+        </view>
+      </view>
+      <!-- recommend 精品推荐 -->
+      <view class="recommend-view">
+        <view class="recommend-title"><text>精品推荐</text></view>
+        <view class="recommend-list">
+          <import src='../template/storelist.wxml' />
+          <block wx:for="{{storeList}}" wx:key="storeList" wx:for-item="store">
+            <template is="storelist" data="{{...store}}"></template>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- tabbar 页脚 -->
+<include src="../common/tabbar.wxml" wx:if="{{PageCur!='task'&&PageCur!='subscribe'}}"></include>
+<!-- auth -->
+<!-- <include src="../common/auth.wxml" wx:if="{{showAuthorizeModal}}"></include> -->

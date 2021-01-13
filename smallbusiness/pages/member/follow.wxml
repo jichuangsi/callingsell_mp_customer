@@ -1,0 +1,43 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">我的收藏</view>
+</cu-custom>
+<view class="page-view">
+  <view class="none-data" wx:if="{{storeList.length==0}}">
+    <view class="no-data-img" style="background:url({{staticurl}}no-data.png) no-repeat;"></view>
+    <text class="no-data-text">暂无数据</text>
+  </view>
+  <view class="storeView">
+    <view class="storeList">
+      <import src='../template/storelist.wxml' />
+      <block wx:for="{{storeList}}" wx:key="storeList" wx:for-item="store">
+        <navigator hover-class="none" open-type="navigate" url="/pages/store/index?id={{store.shop_id}}" style="width:100%;">
+          <view class="listItem flex">
+            <view class="itemLeft"><image src="{{store.logo?store.logo:store.photo}}"></image></view>
+            <view class="itemRight">
+              <view class="infoTitle text-cut"><text>{{store.shop_name}}</text></view>
+              <view class="fl">
+                <view class="infoSaleRank flex align-center">
+                  <view class="rank"><text class="cuIcon-favorfill rank-icon"></text>{{store.star?store.star:3}}</view>
+                  <view class="sale">月售 <span>{{store.month_num}}</span> </view>
+                </view>
+                <view class="infoDelivery flex align-center">
+                  <view class="minPrice">起送 <text class="text-price"></text>{{store.since_money}}</view>
+                  <view class="delivery">配送 <text class="text-price"></text>{{store.logistics}}</view>
+                </view>
+              </view>
+              <view class="fl">
+                <view class="newUser" wx:if="{{store.isNew}}">
+                  <text class="newFont">新</text><text class="newText">新用户下单立减{{store.newReduce}}元</text>
+                </view>
+                <view class="fullReduce" wx:if="{{store.isFullReduce}}">
+                  <text class="reduceFont">减</text>
+                  <text class="reduceText" wx:for="{{store.fullReduce}}" wx:for-item="store.reduce" wx:key="fullReduce">{{index>0?' , ':''}}满{{store.reduce.price}}减{{store.reduce.reduce}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </navigator>
+      </block>
+    </view>
+  </view>
+</view>

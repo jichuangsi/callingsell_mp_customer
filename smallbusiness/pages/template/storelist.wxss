@@ -1,0 +1,26 @@
+.storeView{/*margin-top: 50rpx;*/padding:0 30rpx;border-radius: 20rpx;}
+.storeView .storeTitle{color: #333;font-size: 32rpx;font-weight: bold;}
+.storeView .storeList{margin-top:30rpx;color: #333;font-size: 32rpx;}
+.storeList .listItem{padding:26rpx 0 26rpx 21rpx;margin-bottom:20rpx;min-height: 164rpx;background: var(--white);border-radius: 10rpx;}
+.listItem .itemLeft{margin-right:20rpx;width: 140rpx;height: 110rpx;position: relative;}
+.listItem .itemLeft image{width: 100%;height: 100%;}
+.listItem .itemLeft .shopstatus{position: absolute;right: 0rpx;top: 0rpx;padding: 5rpx 10rpx;background-color: #C02C38;color: #FFFFFF;}
+.listItem .itemRight {width: 529rpx;}
+.listItem .itemRight .infoTitle{font-size: 36rpx;line-height: 36rpx;font-weight: bold;color: #333;}
+.listItem .itemRight .infoSaleRank{margin:10rpx 0 5rpx 0;}
+.listItem .itemRight .infoSaleRank,.listItem .itemRight .infoDelivery{font-size: 22rpx;color: #666;}
+.infoSaleRank .rank{margin-right:20rpx;}
+.infoSaleRank .rank .rank-icon{margin-right:4rpx;font-size: 22rpx;color: #C02C38;}
+.infoDelivery .minPrice{margin-right:20rpx;}
+.infoArrive{height:70rpx;margin:8rpx 20rpx 0 0;text-align: right;}
+.infoArrive .arriveText{margin-bottom:6rpx;height:36rpx;}
+.infoArrive .arriveText text{padding: 4rpx 6rpx;font-size:22rpx;border:1px solid #C02C38;text-align:center;border-radius:5rpx;color:#C02C38;}
+.infoArrive .infoPosition{font-size: 20rpx;color:#666;}
+.infoArrive .infoPosition .distance{margin-left: 40rpx;}
+.newUser,.fullReduce{margin-top:10rpx;}
+/*新用户*/
+.newUser .newFont{padding: 2rpx; margin-right: 16rpx; width: 30rpx; height: 28rpx; background: #C02C38; border-radius: 5rpx; color: #FFFFFF;font-size: 22rpx;}
+.newUser .newText{font-size: 22rpx; color: #666666;}
+/*满减*/
+.fullReduce .reduceFont{padding: 2rpx; margin-right: 16rpx; width: 30rpx; height: 28rpx; color: #FFFFFF;font-size: 22rpx; background: #FF5B02; border-radius: 5rpx;}
+.fullReduce .reduceText{font-size: 22rpx; color: #666666;}

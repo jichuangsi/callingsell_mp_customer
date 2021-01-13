@@ -1,0 +1,78 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">{{shopid==0?'商店搜索':'店内搜索'}}</view>
+</cu-custom>
+<view class="page-view">
+  <view class="cu-bar search bg-white">
+    <view class="search-form round">
+      <text class="cuIcon-search"></text>
+      <input type="text" placeholder="请输入商家名称" confirm-type="search" name="search" id="search" maxlength="18" data-type="search" value="{{postData.search}}" bindinput="onTextChange"></input>
+    </view>
+    <view class="action">
+      <button class="cu-btn bg-thumb shadow-blur round" bindtap="goSearch">搜索</button>
+    </view>
+  </view>
+  <!-- <view class="tag">
+    <view class="tag-head-title">热门搜索</view>
+    <view class="tag-list">
+      <view class="tag-item cu-tag line-black" wx:for="{{searchHot}}" wx:key="searchHot" data-key="{{item.title}}">{{item.title}}</view>
+    </view>
+  </view> -->
+  <view class="search-result" wx:if="{{showResult}}">
+    <view class="search-result-head">搜索结果</view>
+    <view class="search-result-list" wx:if="{{!shopid}}">
+      <import src='../template/storelist.wxml' />
+      <block wx:for="{{storeList}}" wx:key="storeList" wx:for-item="store">
+        <template is="storelist" data="{{...store}}"></template>
+      </block>
+    </view>
+    <block wx:if="{{!goods}}">
+      <view class="empty-view flex justify-center align-center">
+        <view class="empty-box">
+          <view class="cuIcon-info text-gray"></view>
+          <view class="no-data-text">没有相关的商品，换个搜索词看看</view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+        <view class="cu-list menu-avatar">
+          <view class="cu-item" wx:for="{{goods}}" wx:key="categoods">
+            <view class="cu-avatar" style="background-image:url({{item.img}});" bindtap="goGoodDeatil" 
+            data-url="/pages/store/good/index?shopid={{item.shop_id}}&goodid={{item.product_id}}"></view>
+            <view class="content" bindtap="goGoodDeatil" data-url="/pages/store/good/index?shopid={{item.shop_id}}&goodid={{item.product_id}}">
+              <view class="text-black good-title">{{item.name}}</view>
+              <view class="text-sm flex tags">
+                <block>
+                  <text class="cu-tag line-thumb">仅剩{{item.num}}份</text>
+                </block>
+              </view>
+              <view class="text-sales">
+                <text>售 {{item.sold_num}}</text>赞 {{12}}
+              </view>
+              <view class="good-price">
+                <text class="text-price text-thumb now-price">{{item.price}}</text>
+                <text class="text-price market-price">{{item.cost_price}}</text>
+              </view>
+            </view>
+            <!-- 有规格 -->
+            <!-- <block wx:if="{{item.is_options==1}}">
+              <view class="action">
+                <view class="select-spec bg-thumb" bindtap="goodSelectSpec" data-good="{{item}}" data-goodIndex="{{index}}" data-cateIndex="{{cateindex}}">选择规格</view>
+              </view>
+            </block> -->
+            <!-- 没有规格 -->
+            <!-- <block wx:else>
+              <view class="action">
+                <button class="cu-btn icon button-hover" bindtap="reduceCart2" data-good="{{item}}" data-goodIndex="{{index}}" data-cateIndex="{{cateindex}}" disabled="{{item.buy<=0?true:false}}">-</button>
+                <text class="good-num">{{item.buy_num?item.buy_num:0}}</text>
+                <button class="cu-btn icon button-hover bg-thumb text-white" data-good="{{item}}" data-goodIndex="{{index}}" data-cateIndex="{{cateindex}}" bindtap="goodSelectSpec">+</button>
+              </view>
+            </block> -->
+
+          </view>
+          <!-- </navigator> -->
+        </view>
+
+    </block>
+  </view>
+</view>
+

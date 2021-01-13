@@ -1,0 +1,55 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">拎手招募</view>
+</cu-custom>
+<view class="page-view">
+  <view class="cu-form-group">
+    <view class="title">联系人</view>
+    <input placeholder="输入您的姓名" value="{{postData.username}}" data-type="username" bindinput="onDataChange"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">手机号码</view>
+    <input placeholder="输入手机号码" value="{{postData.phone}}" data-type="phone" bindinput="onDataChange"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">验证码</view>
+    <input placeholder="输入验证码" value="{{postData.rerifycode}}" data-type="rerifycode" bindinput="onDataChange"></input>
+    <button class="cu-btn {{cansend?'bg-green':''}} shadow" bindtap="getVerifyCode" >{{!cansend?wait+'s':'验证码'}}</button>
+  </view>
+	<view class="cu-bar bg-white margin-top">
+		<view class="action">
+			请上传你的身份证正面
+		</view>
+	</view>
+  <view class="cu-form-group">
+    <view class="grid col-4 grid-square flex-sub">
+      <view class="bg-img" wx:for="{{idCardFrontView}}" wx:key="idCardFront" bindtap="ViewImage" data-type="idCardFront" data-url="{{idCardFrontView[index]}}">
+        <image src='{{idCardFrontView[index]}}' mode='aspectFill'></image>
+        <view class="cu-tag bg-red" catchtap="DelImg" data-type="idCardFront">
+          <text class="cuIcon-close"></text>
+        </view>
+      </view>
+      <view class="solids" bindtap="ChooseImage" data-type="idCardFront" wx:if="{{idCardFrontView.length<1}}">
+        <text class="cuIcon-cameraadd"></text>
+      </view>
+    </view>
+  </view>
+	<view class="cu-bar bg-white margin-top">
+		<view class="action">
+			请上传你的身份证反面
+		</view>
+	</view>
+  <view class="cu-form-group">
+    <view class="grid col-4 grid-square flex-sub">
+      <view class="bg-img" wx:for="{{idCardBackView}}" wx:key="idCardBackView" bindtap="ViewImage" data-type="idCardBack" data-url="{{idCardBackView[index]}}">
+        <image src='{{idCardBackView[index]}}' mode='aspectFill'></image>
+        <view class="cu-tag bg-red" catchtap="DelImg" data-type="idCardBack">
+          <text class="cuIcon-close"></text>
+        </view>
+      </view>
+      <view class="solids" bindtap="ChooseImage" data-type="idCardBack" wx:if="{{idCardBackView.length<1}}">
+        <text class="cuIcon-cameraadd"></text>
+      </view>
+    </view>
+  </view>
+  <view class="submit-btn" bindtap="onSubmit">提交</view>
+</view>

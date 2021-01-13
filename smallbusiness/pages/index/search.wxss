@@ -1,0 +1,61 @@
+page{ background: #ffffff;}
+.tag{padding:0 20rpx;margin:20rpx 30rpx 0 30rpx;}
+.tag-head-title{margin-bottom:20rpx;font-size: 28rpx;color:var(--black);}
+.tag-list{}
+.tag-item{margin-bottom:20rpx;}
+.cu-tag[class*="line-"]::after {border-radius: 8rpx;}
+.cu-tag {margin-left: 0!important;margin-right: 40rpx;}
+.cu-tag:last-child{margin-right: 0;}
+
+
+/*搜索结果*/
+.search-result{margin-top: 30rpx;border-radius: 20rpx;}
+/* .search-result .search-result-head{font-size: 32rpx;font-weight: bold;color: #333333;display: table;width: auto;white-space: nowrap;border-spacing: 70rpx 0;margin:20rpx 40rpx 20rpx 40rpx;} */
+.search-result .search-result-head{font-size: 32rpx;font-weight: bold;color: #333333;display: table;width: auto;white-space: nowrap;border-spacing: 70rpx 0;margin:20rpx 40rpx 20rpx 40rpx;}
+.search-result-head::before,.search-result-head::after{display: table-cell;content: "";width: 50%;background: linear-gradient(#ccc, #ccc) repeat-x center;background-size: 1rpx 1rpx;}
+.search-result .search-result-list{margin-top:30rpx;color: #333;font-size: 32rpx;}
+.search-result-list .listItem{padding:26rpx 0 20rpx 21rpx;/*margin-bottom:20rpx;*/min-height: 164rpx;background: var(--white);}
+.listItem .itemLeft{margin-right:20rpx;width: 140rpx;height: 110rpx;}
+.listItem .itemLeft image{width: 100%;height: 100%;}
+.listItem .itemRight {width: 510rpx;}
+.listItem .itemRight .infoTitle{font-size: 36rpx;line-height: 36rpx;font-weight: bold;color: #333;}
+.listItem .itemRight .infoSaleRank{margin:10rpx 0 5rpx 0;}
+.listItem .itemRight .infoSaleRank,.listItem .itemRight .infoDelivery{font-size: 22rpx;color: #666;}
+.infoSaleRank .rank{margin-right:20rpx;}
+.infoSaleRank .rank .rank-icon{margin-right:4rpx;font-size: 22rpx;color: var(--thumb-color);}
+.infoDelivery .minPrice{margin-right:20rpx;}
+.infoArrive{margin:8rpx 5rpx 0 0;text-align: right;}
+.infoArrive .arriveText{margin-bottom:2rpx;}
+.infoArrive .arriveText text{padding: 4rpx 6rpx;font-size:22rpx;border:1px solid var(--thumb-color);text-align:center;border-radius:5rpx;color:var(--thumb-color);}
+.infoArrive .infoPosition{font-size: 20rpx;color:#666;}
+.infoArrive .infoPosition .distance{margin-left: 40rpx;}
+/*新用户*/
+.newUser .newFont{padding: 2rpx; margin-right: 16rpx; width: 30rpx; height: 28rpx; background: var(--thumb-color); border-radius: 5rpx; color: #FFFFFF;font-size: 22rpx;}
+.newUser .newText{font-size: 22rpx; color: #666666;}
+/*满减*/
+.fullReduce .reduceFont{padding: 2rpx; margin-right: 16rpx; width: 30rpx; height: 28rpx; color: #FFFFFF;font-size: 22rpx; background: #FF5B02; border-radius: 5rpx;}
+.fullReduce .reduceText{font-size: 22rpx; color: #666666;}
+
+/*店内*/
+.cu-list.menu-avatar>.cu-item {margin-top:20rpx;height: 190rpx;width:100%;}
+.cu-list.menu-avatar>.cu-item .content {top:0;left:240rpx;width:320rpx;}
+.cu-avatar{width:190rpx;height: 190rpx;}
+.good-title{font-size: 26rpx;font-weight: bold;}
+.tags{margin-top:10rpx;min-height: 36rpx;}
+.tags .cu-tag {padding:0 8rpx;height:36rpx;font-size:22rpx;background: var(-hex-FFE7E9);}
+.tags .cu-tag[class*="line-"]::after { border-radius: 5rpx;}
+.text-sales{margin-top:10rpx;font-size:22rpx;color:var(--hex-999999);}
+.text-sales text{margin-right: 20rpx;}
+.good-price{}
+.now-price{font-size:30rpx;font-weight: bold;margin-right:20rpx;}
+.market-price{font-size:24rpx;color:var(--hex-999999);text-decoration: line-through;}
+/*购买按钮*/
+.cu-btn.icon{ width: 44rpx; height: 44rpx; font-weight: bold;}
+.cu-list.menu-avatar>.cu-item .action {z-index:9; width: 150rpx;}
+.select-spec{padding:5rpx 0;border-radius: 10rpx;}
+.good-num{padding: 0 5rpx;}
+
+/*没有数据时*/
+.empty-view{ text-align: center; height: 800rpx;}
+.empty-box .cuIcon-info{ font-size: 150rpx;}
+.empty-box .no-data-text{ margin: 10rpx 0 60rpx 0;}

@@ -1,0 +1,193 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"enhance": false,
+		"postcss": true,
+		"preloadBackgroundData": false,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"uglifyFileName": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"compileHotReLoad": false,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"bundle": false,
+		"useIsolateContext": true,
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false,
+		"useMultiFrameRuntime": false,
+		"useApiHook": true,
+		"enableEngineNative": false,
+		"userConfirmedBundleSwitch": false,
+		"packNpmManually": false,
+		"packNpmRelationList": [],
+		"minifyWXSS": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.12.2",
+	"appid": "wxc9a5c2cfa1172bef",
+	"projectname": "%E5%B0%8F%E5%95%86%E5%AE%B6_1204",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"gamePlugin": {
+			"list": []
+		},
+		"miniprogram": {
+			"list": [
+				{
+					"id": 0,
+					"name": "商家列表 - 组件模式",
+					"pathName": "pages/index/index",
+					"query": "PageCur=store",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "发布任务",
+					"pathName": "pages/task/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "购物车",
+					"pathName": "pages/cart/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "购物车 - 组件模式",
+					"pathName": "pages/index/index",
+					"query": "PageCur=cart",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "个人中心 - 组件模式",
+					"pathName": "pages/index/index",
+					"query": "PageCur=member",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "个人中心 - 订单列表",
+					"pathName": "pages/member/order",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "店铺详情页",
+					"pathName": "pages/store/index",
+					"query": "id=2",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "商品详情",
+					"pathName": "pages/store/good/index",
+					"query": "shopid=2&goodid=3",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人中心 - 意见反馈",
+					"pathName": "pages/store/feedback",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人中心 - 设置",
+					"pathName": "pages/member/setting",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 10,
+					"name": "个人中心 - 我的地址",
+					"pathName": "pages/member/address/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "个人中心 - 增加修改地址",
+					"pathName": "pages/member/address/post",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人中心 - 附近商家",
+					"pathName": "pages/member/server/nearby",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "个人中心 - 消费统计",
+					"pathName": "pages/member/server/statistics",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 14,
+					"name": "个人中心 - 拎手招募",
+					"pathName": "pages/member/delivery/join",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 16,
+					"name": "创建订单",
+					"pathName": "pages/order/create",
+					"query": "goodid=3&shopid=2&userid=10",
+					"scene": null
+				},
+				{
+					"id": 16,
+					"name": "当前预约列表",
+					"pathName": "pages/member/appointment/currentlist",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

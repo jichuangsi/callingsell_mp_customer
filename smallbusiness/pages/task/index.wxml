@@ -1,0 +1,10 @@
+<cu-custom bgColor="bg-white" isHome="{{true}}">
+  <view slot="content">发布任务</view>
+</cu-custom>
+<view class="page-view">
+  <include src="../common/search.wxml"></include>
+  <view class="taskView">
+
+  </view>
+</view>
+<include src="../common/tabbar.wxml"></include>

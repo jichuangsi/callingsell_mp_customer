@@ -1,0 +1,85 @@
+<view class="cu-bar tabbar bg-white shadow foot" wx:if="{{changeType}}">
+  <view class="action" data-cur="home">
+    <navigator hoverClass="none" openType="navigate" url="/pages/index/index">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/icon_01{{PageCur=='home'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='home'?'tabbar-active':'text-black'}}">首页</view>
+    </navigator>
+  </view>
+  <view class="action" data-cur="store">
+    <navigator hoverClass="none" openType="navigate" url="/pages/store/index">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/icon_02{{PageCur=='store'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='store'?'tabbar-active':'text-black'}}">商家</view>
+  </navigator>
+  </view>
+  <view class="action" data-cur="task">
+    <navigator hoverClass="none" openType="navigate" url="/pages/task/index">
+      <view class='cuIcon-cu-image'>
+        <image src="/images/tabbar/icon_03{{PageCur=='task'?'_cur':''}}.png"></image>
+      </view>
+      <view class="{{PageCur=='task'?'tabbar-active':'text-black'}}">发布任务</view>
+    </navigator>
+  </view>
+  <view class="action" data-cur="cart">
+    <navigator hoverClass="none" openType="navigate" url="{{PageCur!='cart'?'/pages/cart/index':''}}">
+      <view class='cuIcon-cu-image'>
+        <image src="/images/tabbar/icon_04{{PageCur=='cart'?'_cur':''}}.png"></image>
+      </view>
+      <view class="{{PageCur=='cart'?'tabbar-active':'text-black'}}">购物车</view>
+    </navigator>
+  </view>
+  <view class="action" data-cur="member">
+    <navigator hoverClass="none" openType="navigate" url="/pages/member/index">
+      <view class='cuIcon-cu-image'>
+        <image src="/images/tabbar/icon_05{{PageCur=='member'?'_cur':''}}.png"></image>
+      </view>
+      <view class="{{PageCur=='member'?'tabbar-active':'text-black'}}">我的</view>
+    </navigator>
+  </view>
+</view>
+
+<view class="cu-bar tabbar bg-white shadow foot" wx:else>
+  <view class="action" data-cur="home" bindtap="tabbarChange">
+    <!-- <navigator hoverClass="none" openType="navigate" url="/pages/index/index"> -->
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/icon_01{{PageCur=='home'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='home'?'tabbar-active':'text-black'}}">首页</view>
+    <!-- </navigator> -->
+  </view>
+  <view class="action" data-cur="store" bindtap="tabbarChange">
+    <!-- <navigator hoverClass="none" openType="navigate" url="/pages/store/index"> -->
+    <view class='cuIcon-cu-image'>
+      <image src="/images/tabbar/icon_02{{PageCur=='store'?'_cur':''}}.png"></image>
+    </view>
+    <view class="{{PageCur=='store'?'tabbar-active':'text-black'}}">商家</view>
+  <!-- </navigator> -->
+  </view>
+  <view class="action" data-cur="subscribe" bindtap="tabbarChange">
+    <!-- <navigator hoverClass="none" openType="navigate" url="/pages/subscribe/index"> -->
+      <view class='cuIcon-cu-image'>
+        <image src="/images/tabbar/icon_03{{PageCur=='subscribe'?'_cur':''}}.png"></image>
+      </view>
+      <view class="{{PageCur=='subscribe'?'tabbar-active':'text-black'}}">我的预约</view>
+    <!-- </navigator> -->
+  </view>
+  <view class="action" data-cur="cart" bindtap="tabbarChange">
+    <!-- <navigator hoverClass="none" openType="navigate" url="{{PageCur!='cart'?'/pages/cart/index':''}}"> -->
+      <view class='cuIcon-cu-image'>
+        <image src="/images/tabbar/icon_04{{PageCur=='cart'?'_cur':''}}.png"></image>
+      </view>
+      <view class="{{PageCur=='cart'?'tabbar-active':'text-black'}}">购物车</view>
+    <!-- </navigator> -->
+  </view>
+  <view class="action" data-cur="member" bindtap="tabbarChange">
+    <!-- <navigator hoverClass="none" openType="navigate" url="/pages/member/index"> -->
+      <view class='cuIcon-cu-image'>
+        <image src="/images/tabbar/icon_05{{PageCur=='member'?'_cur':''}}.png"></image>
+      </view>
+      <view class="{{PageCur=='member'?'tabbar-active':'text-black'}}">我的</view>
+    <!-- </navigator> -->
+  </view>
+</view>

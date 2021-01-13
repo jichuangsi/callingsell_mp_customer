@@ -1,0 +1,134 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">流动摊档入驻</view>
+</cu-custom>
+<view class="page-view">
+  <view class="form-view">
+    <view class="cu-form-group">
+      <view class="title">摊档名称</view>
+      <input placeholder="输入摊档名称" value="{{postData.shopname}}" data-type="shopname" bindinput="onDataChange"></input>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">商户类目</view>
+      <picker mode="selector" range="{{multiArray}}" range-key="{{'name'}}" bindchange="CategoryChange" value="0">
+        <view class="picker {{postData.category_name!=''?'':'placeholder'}}" style="{{postData.category_name!=''?'':'color:#808080'}}">
+          {{postData.category_name!=''?postData.category_name:'请选择商户类目'}}
+        </view>
+      </picker>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">摊档地址</view>
+      <picker mode="multiSelector" bindcolumnchange="bindMultiPickerColumnChange" bindchange="RegionChange" range-key="{{'name'}}" value="{{value}}" range="{{addressArray}}">
+        <view class="picker {{postData.region!=''?'':'placeholder'}}" style="{{postData.region!=''?'':'color:#808080'}}">
+          {{postData.region!=''?postData.region[0]+'，'+postData.region[1]+'，'+postData.region[2]:'请选择摊档地址'}}
+        </view>
+      </picker>
+      <!-- <picker mode="region" bindchange="RegionChange" value="{{postData.region}}" custom-item="{{customItem}}">
+        <view class="picker {{postData.region!=''?'':'placeholder'}}" style="{{postData.region!=''?'':'color:#808080'}}">
+          {{postData.region!=''?postData.region[0]+'，'+postData.region[1]+'，'+postData.region[2]:'请选择摊档地址'}}
+        </view>
+      </picker> -->
+    </view>
+    <view class="red-group">
+      <view class="title">*请确认填写的地址信息是否准确</view>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">详细地址</view>
+      <input placeholder="输入详细地址" value="{{postData.address}}" data-type="address" bindinput="onDataChange"></input>
+    </view>
+    <!-- <view class="cu-form-group">
+      <view class="title">具体位置</view>
+      <input placeholder="输入小区+楼栋号+单元室" value="{{postData.address1}}" data-type="address1" bindinput="onDataChange"></input>
+    </view> -->
+    <view class="cu-form-group">
+      <view class="title">配送范围</view>
+      <input class="arrow" placeholder="设置配送范围" value="{{postData.radiusKM?postData.radiusKM+'m':''}}" bindtap="goUrl" data-url="/pages/member/joinus/range" disabled="true"></input>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">联系人</view>
+      <input placeholder="输入联系人名称" value="{{postData.username}}" data-type="username" bindinput="onDataChange"></input>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">联系方式</view>
+      <input placeholder="输入你的手机号码" value="{{postData.phone}}" data-type="phone" bindinput="onDataChange"></input>
+    </view>
+    <view class="cu-bar bg-white margin-top">
+      <view class="action">
+        请上传摊位图片
+      </view>
+    </view>
+    <view class="cu-form-group">
+      <view class="grid col-4 grid-square flex-sub">
+        <view class="bg-img" wx:for="{{shopFrontView}}" wx:key="shopFront" bindtap="ViewImage" data-type="shopFront" data-url="{{shopFrontView[index]}}">
+          <image src='{{shopFrontView[index]}}' mode='aspectFill'></image>
+          <view class="cu-tag bg-red" catchtap="DelImg" data-type="shopFront">
+            <text class="cuIcon-close"></text>
+          </view>
+        </view>
+        <view class="solids" bindtap="ChooseImage" data-type="shopFront" wx:if="{{shopFrontView.length<1}}">
+          <text class="cuIcon-cameraadd"></text>
+        </view>
+      </view>
+    </view>
+    <view class="cu-bar bg-white margin-top">
+      <view class="action">
+        请上传您的身份证正反面
+      </view>
+    </view>
+    <view class="cu-form-group">
+      <view class="grid col-4 grid-square flex-sub">
+        <view class="bg-img" wx:for="{{idCardView}}" wx:key="idCard" bindtap="ViewImage" data-type="idCard" data-url="{{idCardView[index]}}">
+          <image src='{{idCardView[index]}}' mode='aspectFill'></image>
+          <view class="cu-tag bg-red" catchtap="DelImg" data-type="idCard" data-index="{{index}}">
+            <text class="cuIcon-close"></text>
+          </view>
+        </view>
+        <view class="solids" bindtap="ChooseImage" data-type="idCard" wx:if="{{idCardView.length<2}}">
+          <text class="cuIcon-cameraadd"></text>
+        </view>
+      </view>
+    </view>
+
+    
+    <view class="cu-bar bg-white margin-top" wx:if="{{(postData.category_id==85||postData.category_id==83||postData.category_id==96)&&postData.category_id!=''}}">
+      <view class="action">
+        请上传您的食品经营许可证
+      </view>
+    </view>
+    <view class="cu-form-group" wx:if="{{(postData.category_id==85||postData.category_id==83||postData.category_id==96)&&postData.category_id!=''}}">
+      <view class="grid col-4 grid-square flex-sub">
+        <view class="bg-img" wx:for="{{pic3}}" wx:key="pic3" bindtap="ViewImage" data-type="pic3" data-url="{{pic3View[index]}}">
+          <image src='{{pic3View[index]}}' mode='aspectFill'></image>
+          <view class="cu-tag bg-red" catchtap="DelImg" data-type="pic3">
+            <text class="cuIcon-close"></text>
+          </view>
+        </view>
+        <view class="solids" bindtap="ChooseImage" data-type="pic3" wx:if="{{pic3View.length<1}}">
+          <text class="cuIcon-cameraadd"></text>
+        </view>
+      </view>
+    </view>
+
+    <view class="cu-form-group te-group">
+      <view class="title">我已阅读并同意
+      <navigator hover-class="none" open-type="navigate" url="/pages/member/agreement">
+            拎手社区新零售隐私政策
+      </navigator>
+      <navigator hover-class="none" open-type="navigate" url="/pages/member/agreement">
+            拎手社区新零售用户服务协议
+      </navigator>
+      
+      </view>
+      <checkbox-group bindchange="switch1Change">
+        <label class="checkbox">
+          <checkbox value="r1" checked="{{switch1Checked}}"/>
+        </label>
+      </checkbox-group>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">验证码</view>
+      <input placeholder="输入验证码" value="{{postData.rerifycode}}" data-type="rerifycode" bindinput="onDataChange"></input>
+      <button class="cu-btn {{cansend?'bg-green':''}} shadow" bindtap="getVerifyCode" >{{!cansend?wait+'s':'验证码'}}</button>
+    </view>
+  </view>
+  <view class="submit-btn" bindtap="onSubmit">立即申请入驻</view>
+</view>

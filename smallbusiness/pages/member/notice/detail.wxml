@@ -1,0 +1,12 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">消息详情</view>
+</cu-custom>
+<view class="page-view padding">
+  <view class="text-black text-lg">{{title}}</view>
+  <view class="text-gray text-sm padding-tb-sm ">{{time}}</view>
+  <view class="padding-top-sm" style="border-top: 1px solid #ccc;" bindtap="fz">
+    <import src="/utils/wxParse/wxParse.wxml"></import>
+    <template is="wxParse" data="{{wxParseData:wxParseData.nodes}}"></template>
+    <view wx:if="{{link_url}}">后台链接：{{link_url}}</view>
+  </view>
+</view>

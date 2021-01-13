@@ -1,0 +1,36 @@
+<template name="storelist">
+  <navigator hover-class="none" open-type="navigate" url="/pages/store/index?id={{shop_id}}" style="width:100%;">
+    <view class="listItem flex">
+      <view class="itemLeft"><image src="{{logo?logo:photo}}"></image><view class="shopstatus" wx:if="{{is_promotion==1}}">促销</view></view>
+      <view class="itemRight">
+        <view class="infoTitle text-cut"><text>{{shop_name}}</text></view>
+        <view class="fl">
+          <view class="infoSaleRank flex align-center">
+            <view class="rank"><text class="cuIcon-favorfill rank-icon"></text>{{star?star:3}}</view>
+            <view class="sale">月售 <span>{{month_num}}</span> </view>
+          </view>
+          <view class="infoDelivery flex align-center">
+            <view class="minPrice">起送 <text class="text-price"></text>{{since_money}}</view>
+            <view class="delivery">配送 <text class="text-price"></text>{{logistics}}</view>
+          </view>
+        </view>
+        <view class="infoArrive fr grid col-1">
+          <view class="arriveText"><text>准时达</text></view>
+          <view class="infoPosition ">
+            <text class="time">{{distribution?distribution:'大约'+30}}分钟</text>
+            <text class="distance">{{juli?juli:'--km'}}</text>
+          </view>
+        </view>
+        <view class="fl">
+          <view class="newUser" wx:if="{{isNew}}">
+            <text class="newFont">新</text><text class="newText">新用户下单立减{{newReduce}}元</text>
+          </view>
+          <view class="fullReduce" wx:if="{{isFullReduce}}">
+            <text class="reduceFont">减</text>
+            <text class="reduceText" wx:for="{{fullReduce}}" wx:for-item="reduce" wx:key="fullReduce">{{index>0?' , ':''}}满{{reduce.price}}减{{reduce.reduce}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </navigator>
+</template>

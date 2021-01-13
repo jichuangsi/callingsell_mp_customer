@@ -1,0 +1,61 @@
+.cu-custom .cu-bar{background: var(--white);}
+.home-page .cu-bar .content{left: 30rpx!important;right:auto;width: calc(100% - 300rpx)!important;text-align: left;}
+.page-view{padding-bottom: calc(100rpx + env(safe-area-inset-bottom) / 2);}
+.search-view .search-form{background-color: linear-gradient(0deg, #FFFFFF 0%, #F9F9F9 100%);}
+.search-view .action>text[class*="cuIcon-"]{font-size: 40rpx;}
+.content-view{background:#f9f9f9;padding:0 30rpx;}
+/*轮播*/
+.swiper-view .screen-swiper,.swiper-view .screen-swiper swiper-item{ height: 380rpx; border-radius: 20rpx;}
+.swiper-view swiper.square-dot .wx-swiper-dot{opacity: 0.4; width: 48rpx; height: 8rpx;	border-radius: 4rpx; margin: 0 8rpx !important; background: #ffffff;}
+.swiper-view swiper.square-dot .wx-swiper-dot.wx-swiper-dot-active {opacity: 1; background: var(--thumb-color);}
+/*navView*/
+.navView{
+  margin-top:30rpx;
+  border-radius: 20rpx;
+}
+.navView.cu-list.grid>.cu-item text{
+  color:#333333;
+  font-size: 24rpx;
+}
+/*notice-view*/
+.notice-view{/*background-color: var(--white);*/height: 50rpx;line-height: 50rpx;margin-top:10rpx;}
+.notice-view .flex-sub{margin-right:10rpx;text-align: right;}
+.notice-view .flex-sub text{font-size: 28rpx;color:var(--thumb-color);font-weight: bold;}
+.notice-view .notice-title{flex: 10;font-size: 26rpx;color:#999;}
+/*rcommandView*/
+.recommend-view{margin-top: 40rpx;border-radius: 20rpx;}
+.recommend-view .recommend-title{color: #333;font-size: 32rpx;font-weight: bold;}
+.recommend-view .recommend-list{margin-top:30rpx;color: #333;font-size: 32rpx;}
+.recommend-list .listItem{padding:26rpx 0 20rpx 21rpx;/*margin-bottom:20rpx;*/min-height: 164rpx;background: var(--white);}
+.listItem .itemLeft{margin-right:20rpx;width: 140rpx;height: 110rpx;position: relative;}
+.listItem .itemLeft image{width: 100%;height: 100%;}
+.listItem .itemLeft .shopstatus{position: absolute;left: 0rpx;top: 0rpx;padding: 5rpx 10rpx;background-color: #C02C38;color: #FFFFFF;font-size: 20rpx;}
+.listItem .itemRight {width: 510rpx;}
+.listItem .itemRight .infoTitle{font-size: 36rpx;line-height: 36rpx;font-weight: bold;color: #333;}
+.listItem .itemRight .infoSaleRank{margin:10rpx 0 5rpx 0;}
+.listItem .itemRight .infoSaleRank,.listItem .itemRight .infoDelivery{font-size: 22rpx;color: #666;}
+.infoSaleRank .rank{margin-right:20rpx;}
+.infoSaleRank .rank .rank-icon{margin-right:4rpx;font-size: 22rpx;color: var(--thumb-color);}
+.infoDelivery .minPrice{margin-right:20rpx;}
+.infoArrive{margin:8rpx 10rpx 0 0;text-align: right;}
+
+/*.infoArrive .arriveText{width:80rpx;height:30rpx;line-height:30rpx;font-size:22rpx;border:1px solid #C02C38;text-align:center;border-radius:5rpx;color:#C02C38;}*/
+.infoArrive .arriveText{margin-bottom:2rpx;}
+.infoArrive .arriveText text{padding: 4rpx 6rpx;font-size:22rpx;border:1px solid var(--thumb-color);text-align:center;border-radius:5rpx;color:var(--thumb-color);}
+/*.infoArrive .arriveText::after{clear: both;}*/
+.infoArrive .infoPosition{font-size: 20rpx;color:#666;}
+/* .infoArrive .infoPosition .time{} */
+.infoArrive .infoPosition .distance{margin-left: 40rpx;}
+/*新用户*/
+.newUser .newFont{padding: 2rpx; margin-right: 16rpx; width: 30rpx; height: 28rpx; background: var(--thumb-color); border-radius: 5rpx; color: #FFFFFF;font-size: 22rpx;}
+.newUser .newText{font-size: 22rpx; color: #666666;}
+/*满减*/
+.fullReduce .reduceFont{padding: 2rpx; margin-right: 16rpx; width: 30rpx; height: 28rpx; color: #FFFFFF;font-size: 22rpx; background: #FF5B02; border-radius: 5rpx;}
+.fullReduce .reduceText{font-size: 22rpx; color: #666666;}
+
+/* 发布任务 */
+/* .task-component .cu-custom .cu-bar{background: var(--white);}
+.task-component .cu-bar .content{left: 80rpx!important;right:auto;width: calc(100% - 350rpx)!important;text-align: left;}
+.task-component .head-tab .nav .cu-item { height: 60rpx; display: inline-block; line-height: 60rpx; margin: 0 10rpx; padding: 0 20rpx;}
+.task-component .head-tab .nav .cu-item.cur { font-size: 38rpx;color:var(--hex-343434);border:none;} */
+.task-component .cu-custom .cu-bar{background: var(--white);z-index: 1;}

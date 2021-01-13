@@ -1,0 +1,94 @@
+.step-view{
+  width: 690rpx;
+  margin: 30rpx auto;
+  border-radius: 8rpx;
+}
+
+.step-view .cu-steps .cu-item .num {
+  width: 16rpx;	height: 16rpx;
+  border-radius: 50%; line-height: 16rpx; 
+  margin: 10rpx auto 22rpx auto; 
+  font-size: 22rpx;
+  border: 1px solid currentColor;
+  background: currentColor;
+  position: relative;
+  overflow: hidden;
+}
+.cu-steps .cu-item[class*="text-"] .num::after {
+  content: '';
+}
+.cu-steps .cu-item:last-child{font-size: 30rpx;}
+.step-view .cu-steps .cu-item .num.cur { width: 34rpx; height: 34rpx; border-radius: 50%; line-height: 34rpx; font-size: 24rpx;margin: 0 auto 14rpx auto;
+}
+.cu-steps .cu-item .num::before,.cu-steps .cu-item .num::after {
+	content: '';
+}
+.cu-steps .cu-item[class*="text-"] .num.cur::after {
+  content: "\e900";
+}
+.cu-steps .cu-item::before,
+.cu-steps .cu-item::after,
+.cu-steps.steps-arrow .cu-item::before,
+.cu-steps.steps-arrow .cu-item::after {
+	height: 0px;
+	width: calc(100% - 80rpx);
+	left: calc(0px - (100% - 80rpx) / 2);
+	top: 20rpx;
+}
+/* 订单地址 */
+.order-contact{padding:20rpx 30rpx;height:160rpx;width: 690rpx;margin:0 auto;}
+.buyer{font-size: 32rpx;color: var(--black);font-weight: bold;}
+.address{margin-top:20rpx;font-size: 24rpx;color: var(--hex-666666);}
+
+.order-info{padding:30rpx 30rpx 130rpx 30rpx;}
+.order-goods{padding: 15rpx;background: var(--white);border-radius: 20rpx;}
+.order-goods .good-item{position: relative;}
+/*商店相关*/
+.good-item .store{height: 62rpx;line-height: 62rpx;}
+.good-item .storeName{flex: 6;font-size: 32rpx;color:var(--black);font-weight: bold;}
+/*商品相关*/
+.good-item .goods{margin: 10rpx 0 30rpx 0;}
+.good-item .goodspec{flex: 7.2;position: relative;}
+.goodspec .goodimg{float:left;width: 120rpx;height: 120rpx;margin-right: 26rpx;}
+.goodspec .goodimg image{width:120rpx;height: 120rpx;}
+.goodspec .goodimg:after{clear: both;}
+.goodspec .title{color:#343434;font-size: 28rpx;font-weight: bold;}
+.goodspec .spec{color:#9A9A9A;font-size: 22rpx;}
+.goodspec .num{display: inline-block;position: absolute;bottom: 0;color:#9A9A9A;}
+.goodspec .price{position: absolute;bottom: 0;right: 0;}
+.goodspec .price text{font-weight: bold;}
+.goodspec .price text:nth-child(1){color:#9A9A9A;margin-right: 20rpx;text-decoration: line-through;}
+/* .goodspec .price text:nth-child(2){margin-right: 10px;} */
+/*包装费、配送费、优惠相关*/
+.list-item .otherFee{margin: 0 13rpx 0 57rpx;padding-bottom:30rpx;width: 580rpx;}
+.list-item .otherFee{border-bottom:1rpx solid #f5f5f5;}
+.otherFee .packing,.otherFee .delivery,.otherFee .newUser{height: 44rpx;}
+.otherFee .packing view:nth-child(1){display: inline-block;color:#333333;font-size: 28rpx;}
+.otherFee .packing view:nth-child(2){float:right;font-size: 32rpx;font-weight: bold;}
+/* .otherFee .delivery{} */
+.otherFee .delivery view:nth-child(1){display: inline-block;color:#333333;font-size: 28rpx;}
+.otherFee .delivery view:nth-child(2){float:right;font-size: 32rpx;font-weight: bold;}
+/* .otherFee .newUser{} */
+.otherFee .newUser view:nth-child(1){display: inline-block;color:#333333;font-size: 28rpx;}
+.otherFee .newUser view:nth-child(2){float:right;font-size: 32rpx;font-weight: bold;color:var(--thumb-color);}
+/* 商品小计 */
+.total-price{border-top:1rpx solid var(--hex-F5F5F5);text-align: right;}
+.cost-text{font-size: 28rpx;color:#333;}
+.total-cost{font-size: 30rpx;margin-left:30rpx;}
+/* 备注 */
+.order-remarks{border-radius: 10rpx;}
+.remarks-head{font-size: 34rpx;font-weight: bold;color: var(--black);}
+.remarks-content{margin-top:10rpx;font-size: 28rpx;color:var(--black);word-break: break-all;}
+/* 详细信息 */
+.order-detail{border-radius: 10rpx;}
+.order-head{font-size: 34rpx;font-weight: bold;color: var(--black);}
+.cu-form-group {padding: 0;min-height: 60rpx;font-size: 28rpx;color: var(--black);}
+.cu-form-group .title{min-width: calc(4em + 30rpx);}
+.cu-form-group+.cu-form-group {border-top: none;}
+.store-contact{margin-top:20rpx;}
+.btn-contact,.btn-phone{flex: 1;text-align:center;}
+
+/* 底部按钮 */
+.bottom-btn-view{position: fixed;bottom:0; padding:0 30rpx;width: 100%;height: 100rpx;line-height:100rpx;background: #FFFFFF;text-align: right;}
+.cu-btn+.cu-btn{margin-left: 20rpx;}
+.solid-top::after {border-top: 1rpx solid rgba(0, 0, 0, 0.4);}

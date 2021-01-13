@@ -1,0 +1,22 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">配送范围</view>
+</cu-custom>
+<view class="page-view">
+  <view class="map-view">
+    <map 
+      id="map" 
+      longitude="{{longitude}}" 
+      latitude="{{latitude}}" 
+      circles="{{circle}}"
+      scale="13"
+      show-location style="width: 100%; height:{{pageView-60}}px;"></map>
+  </view>
+  <view class="silder-view flex justify-center align-center">
+    <view class="text-info">调节距离</view>
+    <slider min="200" max="5000" step="1" selected-color="#C02C38" block-size="16" bindchange="sliderChange" bindchanging="sliderChangeIng" value="{{radiusKM}}"/>
+    <view class="text-info">{{radiusKM}}m</view>
+  </view>
+  <view class="btn-view flex justify-center align-center">
+    <view class="cu-btn bg-thumb round " bindtap="submit">保存</view>
+  </view>
+</view>

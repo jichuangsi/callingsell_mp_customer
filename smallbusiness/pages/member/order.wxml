@@ -1,0 +1,92 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">我的订单</view>
+</cu-custom>
+<view class="page-view">
+  <scroll-view scroll-x class="bg-white nav fixed" style="top:{{CustomBar}}px">
+    <view class="flex text-center">
+      <view class="cu-item flex-sub {{statusTab==1?'text-thumb cur':''}}" bindtap="{{statusTab==1?'':'tabSelect'}}" data-status="-1" data-index="1">
+      全部
+      </view>
+      <view class="cu-item flex-sub {{statusTab==2?'text-thumb cur':''}}" bindtap="{{statusTab==2?'':'tabSelect'}}" data-status="0" data-index="2">
+      待付款
+      </view>
+      <view class="cu-item flex-sub {{statusTab==3?'text-thumb cur':''}}" bindtap="{{statusTab==3?'':'tabSelect'}}" data-status="1" data-index="3">
+      待配送
+      </view>
+      <view class="cu-item flex-sub {{statusTab==4?'text-thumb cur':''}}" bindtap="{{statusTab==4?'':'tabSelect'}}" data-status="2" data-index="4">
+      待收货
+      </view>
+      <view class="cu-item flex-sub {{statusTab==5?'text-thumb cur':''}}" bindtap="{{statusTab==5?'':'tabSelect'}}" data-status="8" data-index="5">
+      已完成
+      </view>
+    </view>
+  </scroll-view>
+  <block wx:if="{{list.length>0}}">
+    <view class="list-view" style="padding-top:45px">
+    <block wx:for="{{list}}" wx:key="list">
+        <view class="item-view">
+          <!-- 商店标题 -->
+          <view class="store-view">
+            <span class="cuIcon-shop"></span>
+            <text class="store-name text-cut">{{item.name}}</text>
+            <span class="status-text text-thumb fr">{{item.statename}}</span>
+          </view>
+          <!-- 商品 -->
+          <navigator hoverClass="none" openType="navigate" url="/pages/order/detail?id={{item.id}}">
+            <view class="goods-view flex" wx:for="{{item.goods}}" wx:key="goods" wx:for-item="good">
+              <image class="good-image" src="{{good.photo}}" alt=""></image>
+              <view class="good-info">
+                <view class="info-title text-bold text-cut">{{good.name}}</view>
+                <view class="info-spec">{{good.spec}}</view>
+                <view class="info-num">x {{good.num}}</view>
+              </view>
+            </view>
+            <view class="goods-cost">
+              <text class="cost-text">商品小计</text>
+              <text class="text-price total-cost text-bold text-thumb">{{item.money}}</text>
+            </view>
+          </navigator>
+          <!-- 按钮 -->
+          <view class="btn-view">
+            <!-- <button class="cu-btn round line-black shadow btn-cancel" wx:if="{{item.state==0||item.state==1}}" bindtap="ttt">取消订单</button> -->
+            <navigator class="cu-btn round line-black shadow btn-cancel" bindtap="cancelOrder" data-id="{{item.id}}" wx:if="{{item.state==0}}">取消订单</navigator>
+            <button class="cu-btn round line-thumb shadow btn-pay" wx:if="{{item.state==0}}" bindtap="goToPay" data-id="{{item.id}}" data-money="{{item.money}}">立即支付</button>
+            <!-- <navigator class="cu-btn round line-black shadow btn-cancel" wx:if="{{item.state==2}}" bindtap="ttt">联系商家</navigator> -->
+            <navigator class="cu-btn round line-black shadow btn-cancel" wx:if="{{item.state==2||item.state==5}}" url="/pages/order/detail?id={{item.id}}">查看进度</navigator>
+            <navigator class="cu-btn round line-black shadow btn-cancel" wx:if="{{item.state==8}}" bindtap="ttt" data-id="{{item.id}}">删除订单</navigator>
+            <navigator class="cu-btn round line-black shadow btn-cancel" wx:if="{{(item.state==1||item.state==3)&&item.paytype!=0}}" url="/pages/order/detail?id={{item.id}}">查看订单</navigator>
+            <button class="cu-btn round line-thumb shadow btn-pay" wx:if="{{item.state==1}}" bindtap="reminder">我要催单</button>
+            <button class="cu-btn round line-thumb shadow btn-pay" wx:if="{{item.state==2||item.state==5}}" bindtap="CompleteOrder" data-id="{{item.id}}">确认收货</button>
+            <navigator class="cu-btn round line-thumb shadow btn-pay" wx:if="{{item.state==8&&!item.is_dianping}}" bindtap="goUrl" data-url="/pages/member/comment/post?id={{item.id}}">我要评价</navigator>
+          </view>
+        </view>
+    </block>
+    </view>
+  </block>
+  <!-- 没有数据显示 -->
+  <block wx:if="{{list.length==0&&show}}">
+    <view class="empty-view flex justify-center align-center">
+      <view class="empty-box">
+        <view class="cuIcon-info text-gray"></view>
+        <view class="no-data-text">您暂时没有任何订单哦！</view>
+        <navigator class="cu-btn bg-thumb lg shadow radius" url="/pages/index/index">去首页逛逛吧</navigator>
+      </view>
+    </view>
+  </block>
+</view>
+
+<view class="cu-modal bottom-modal {{showModal?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white">
+      <view class="action text-gray" bindtap="hideModal">取消</view>
+      <view class="action text-thumb" bindtap="cancelSure">确定</view>
+    </view>
+    <view>
+      <picker-view indicator-style="height: 50px;" style="width: 100%; height: 200px;" value="{{value}}" bindchange="PickerChange">
+        <picker-view-column>
+          <view wx:for="{{picker}}" style="line-height: 50px">{{item}}</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </view>
+</view>

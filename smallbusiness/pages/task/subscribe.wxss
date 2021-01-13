@@ -1,0 +1,84 @@
+.cu-custom .cu-bar{background: var(--white);}
+.cu-custom .cu-bar .content{left: 80rpx!important;right:auto;width: calc(100% - 350rpx)!important;text-align: left;}
+.head-tab { position: fixed;z-index:99;left:100rpx}
+.head-tab .nav{ height: 80rpx;}
+.head-tab .nav .cu-item { height: 80rpx; display: inline-block; line-height: 80rpx; margin: 0 10rpx; padding: 0 20rpx;}
+.head-tab .nav .cu-item.cur { font-size: 36rpx; font-weight:bold;color:var(--hex-343434);border:none;}
+
+/* .task-component .head-tab{top:0!important;}
+.task-component .cu-custom .cu-bar{background: var(--white);}
+.task-component .cu-custom .cu-bar .content{left: 80rpx!important;right:auto;width: calc(100%)!important;text-align: left;}
+.head-tab { position:absolute;z-index:99;left:100rpx}
+.head-tab .nav{ height: 60rpx;}
+.head-tab .nav .cu-item { height: 60rpx; display: inline-block; line-height: 60rpx; margin: 0 10rpx; padding: 0 20rpx;}
+.head-tab .nav .cu-item.cur { font-size: 36rpx; font-weight:bold;color:var(--hex-343434);border:none;} */
+/*map-view*/
+.map-view{padding-top:280rpx;min-height:582rpx;background: url(https://www.callingsell.com/static/yonghuduan/map.png);background-repeat: no-repeat;background-size: 100%;}
+.map-view .task-cate{padding:20rpx;border-radius: 10rpx;}
+.map-view .task-cate .task-view{flex:1;padding-left:10rpx;border-radius: 10rpx;}
+.task-cate .task-view .task-name{font-size: 32rpx;font-weight: bold;color:var(--hex-9A9A9A);}
+.task-cate .task-view .good-cate{margin-top:4rpx;font-size: 22rpx;color: var(--hex-9A9A9A);}
+.task-cate .task-view.cur .task-name,.task-cate .task-view.cur .good-cate{color: var(--hex-343434);}
+/*task-view*/
+.task-content{padding:30rpx 40rpx 10rpx;border-radius: 10rpx;}
+.task-content .task-title{font-size: 32rpx;font-weight: bold;color:var(--hex-343434);}
+.task-content .task-title text{font-size: 24rpx; color:var(--hex-999999);font-weight: 500;}
+.task-content .cu-form-group{padding:0;}
+.task-content .mb{margin-bottom: 20rpx;}
+.task-content .cu-form-group textarea{margin: 12rpx 0 10rpx!important;height: 3.6em!important;}
+.task-content .cu-form-group input{text-align: center;border-radius: 34rpx;background: #F5F5F5;line-height: 68rpx;height: 68rpx;}
+.task-content .cu-form-group .gang{padding: 0rpx 20rpx;}
+.tc {text-align: center;font-size: 24rpx;color: var(--hex-666666);}
+/* task-address */
+.task-address{padding:30rpx;border-radius: 10rpx;}
+.address-icon-1,.address-icon-2{width:40rpx;height:40rpx;line-height:40rpx;font-size: 22rpx;text-align:center;color:white;border-radius: 50%;}
+.address-icon-1{background: #555555;}
+.address-icon-2{background: #FF9C50;}
+.address-info{flex: 1;margin-left:20rpx;font-size: 32rpx;color:var(--hex-343434);}
+.address-info .phone{margin-top:10rpx;font-size: 24rpx;color:var(--hex-666666);}
+.address-tips{width: 108rpx;font-size:32rpx;background:#F0F0F0;border-radius: 28rpx;text-align: center;height: 50rpx;line-height: 50rpx;}
+.purchase-address,.delivery-address{padding:30rpx 0;}
+.purchase-address+.delivery-address{border-top:1rpx solid var(--hex-F5F5F5);}
+/* culist */
+.cu-list{border-radius: 10rpx;}
+.cu-list.menu>.cu-item {padding: 0 0 0 30rpx;}
+.cu-list .content{font-size: 32rpx;color:var(--hex-666666);}
+.cu-list .action{font-size: 28rpx;color:var(--hex-666666);}
+.cu-list .buy-time{color:var(--hex-343434);}
+/* task-remarks */
+.task-remarks {border-radius: 10rpx;}
+.task-remarks .task-title{font-size: 32rpx; color:var(--hex-666666);}
+.task-remarks .cu-form-group textarea{margin: 22rpx 0 26rpx 10rpx!important;height: 3.6em!important;}
+/*底部按钮*/
+.bottom-btn-view{width: 690rpx;position: fixed;bottom:30rpx;left:30rpx;z-index: 2;}
+.bottom-btn{width:100%;}
+.info-cost{flex:2;height: 98rpx; border-radius: 49rpx 0 0 49rpx;}
+.info-cost view{padding-left: 40rpx;font-size: 28rpx;color:var(--white);}
+.info-cost .text-price{margin:0 20rpx;}
+.go-pay{flex: 1;height: 98rpx; text-align: center; line-height: 98rpx; border-radius: 0 49rpx 49rpx 0;font-size: 32rpx;font-weight:blod;color:var(--white);}
+/* 抢单大厅 */
+.order-hall-tab{height: 80rpx;}
+.order-hall-tab .tab-item{flex:1;font-size: 28rpx;color:var(--hex-9A9A9A);text-align: center;transition: all .6s ease-in-out 0s;}
+.order-hall-tab .tab-item text{padding: 20rpx 0;}
+.order-hall-tab .tab-item.cur text{color:var(--hex-343434);border-bottom:4rpx solid var(--hex-343434);}
+/* hall-missions-list */
+/* .hall-missions-list{} */
+.mission-item{border-radius: 10rpx;}
+.mission-item-info{padding: 20rpx 20rpx 20rpx 60rpx;}
+.mission-item-info .cuIcon-timefill{margin-right: 20rpx;}
+.mission-item-info .limit-time{color:var(--thumb-color);font-weight: bold;}
+.mission-item-info .mission-price{color:var(--thumb-color);font-weight: bold;}
+.get-order-btn{height:90rpx;line-height:90rpx;background: var(--thumb-color);color: white;border-radius: 10rpx;text-align: center;}
+.mission-item+.mission-item{margin-top: 30rpx;}
+
+/* 地址item */
+.address-modal .address-list scroll-view{height: 600rpx;}
+.address-modal .list-item{height:140rpx;border-radius: 10rpx;padding-left:20rpx;}
+.address-modal .list-item+.list-item{margin-top:20rpx;}
+.address-modal .checkbox-view checkbox-group{ padding:50rpx 20rpx; }
+.address-modal .address-view{padding: 23rpx 0; width: 540rpx; text-align: left;}
+.address-modal .address-view .contact{text-align: left;font-size: 34rpx;font-weight: bold;color: var(--black);}
+.address-modal .address-view .address{font-size: 28rpx;color: var(--black);}
+.address-modal .edit-view{padding:40rpx 20rpx;font-size: 32rpx;}
+.address-modal .btn-view{height: 88rpx;line-height:88rpx;width: 690rpx;background: var(--thumb-color);color:var(--white);text-align: center;border-radius:44rpx;}
+

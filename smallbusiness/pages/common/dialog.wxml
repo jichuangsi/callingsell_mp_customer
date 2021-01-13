@@ -1,0 +1,23 @@
+<view class="cu-modal {{showDialogModal?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content"></view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="tips">
+      <view class="tips-icon"><image src="/images/success.png"></image></view>
+      <view class="tips-title">反馈成功</view>
+      <view class="tips-content">
+        <text>我们已经收到您的反馈</text>
+        <text>将会尽快处理</text>
+      </view>
+    </view>
+    <view class="cu-bar bg-white justify-center" style="height:150rpx;">
+      <view class="action btn-view">
+        <button class="cu-btn bg-thumb" bindtap="hideModal">我知道了</button>
+      </view>
+    </view>
+  </view>
+</view>

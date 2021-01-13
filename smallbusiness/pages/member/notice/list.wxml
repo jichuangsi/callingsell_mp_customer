@@ -1,0 +1,25 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">消息列表</view>
+</cu-custom>
+<view class="page-view">
+  <block wx:if="{{noData}}">
+
+  </block>
+  <view class="cu-list menu-avatar" wx:if="{{!noData}}">
+    <view class="cu-item" wx:for="{{list}}" wx:key="list" bindtap="goUrl" data-url="/pages/member/notice/detail?id={{item.msg_id}}">
+      <!-- <view class="cu-avatar round lg" style="background-image:url(jpg);"></view> -->
+      <view class="content">
+        <view class="text-black">{{item.title}}</view>
+        <view class="text-gray text-sm flex">
+          <text class="text-cut">{{item.intro}}</text>
+        </view>
+      </view>
+      <view class="action">
+        <view class="text-grey text-xs">{{item.create_time}}</view>
+        <!-- <view class="cu-tag round bg-grey sm">5</view> -->
+      </view>
+      <view class="status" wx:if="{{item.is_read==0}}"></view>
+    </view>
+  </view>
+  <view style="text-align:center;" wx:if="{{!more}}" class="no-more"><text class="cuIcon-move"></text> 没有更多了 <text class="cuIcon-move"></text></view>
+</view>

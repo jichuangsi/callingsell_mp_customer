@@ -1,0 +1,246 @@
+<cu-custom bgColor="bg-black" isBack="true">
+  <view slot="content">{{store.shop_name}}</view>
+</cu-custom>
+<view class="page-view" style="padding-bottom:{{NavCur==1?'150rpx':'0rpx'}}">
+  <view class="head flex">
+    <view class="head-pic grid col-1">
+      <view><image src="{{store.logo}}"></image></view>
+      <view class="rank flex align-center justify-center"><text class="cuIcon-favorfill rank-icon text-thumb"></text>{{store.star}}</view>
+    </view>
+    <view class="head-info">
+      <view class="flex align-start justify-between">
+        <view class="head-distribution text-cut"><text class="cuIcon-timefill"></text>准时达 | 配送约{{store.sd_time}}分钟</view>
+        <view class="head-btn">
+          <!-- <button class="cu-btn line-{{isLike?'gray':'thumb'}}" bindtap="storeLike">{{isLike?'已赞':'赞'}}</button> -->
+          <button class="cu-btn line-{{isFollow?'gray':'thumb'}}" style="margin-left:30rpx;" bindtap="storeFollow">{{isFollow?'已关注':'关注'}}</button>
+        </view>
+      </view>
+      <view class="head-brief text-cut">{{store.announcement}}</view>
+      <view class="head-fullreduce flex align-center justify-start text-cut" wx:if="{{store.is_full}}">
+        <block wx:if="{{store.order_price_full_1&&store.order_price_reduce_1}}"><text>{{store.order_price_full_1}}减{{store.order_price_reduce_1}}</text></block>
+        <block wx:if="{{store.order_price_full_2&&store.order_price_reduce_2}}"><text>{{store.order_price_full_2}}减{{store.order_price_reduce_2}}</text></block>
+      </view>
+    </view>
+  </view>
+  <view class="flex justify-between tab-nav">
+    <scroll-view scroll-x class="bg-white nav text-left">
+      <view class="cu-item {{1==NavCur?'text-black cur':''}}" bindtap="navSelect" data-id="1">外卖</view>
+      <view class="cu-item {{2==NavCur?'text-black cur':''}}" bindtap="{{NavCur==2?'':'navSelect'}}" data-id="2">评价</view>
+      <view class="cu-item {{3==NavCur?'text-black cur':''}}" bindtap="navSelect" data-id="3">详情</view>
+    </scroll-view>
+    <view class="cu-bar search bg-white search-view" bindtap="goStoreSearch">
+      <view class="search-form round">
+      <text class="cuIcon-search"></text>
+      <input type="text" placeholder="搜索" confirm-type="search" disabled></input>
+      </view>
+    </view>
+  </view>
+  <!-- 外卖 -->
+  <block wx:if="{{NavCur==1}}">
+    <view class="take-out">
+      <swiper class="screen-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+        <swiper-item wx:for="{{store.img}}" wx:key="swiperList">
+          <image src="{{item}}" mode="aspectFill"></image>
+        </swiper-item>
+      </swiper>
+      <view class="vertical-box">
+        <scroll-view class="vertical-nav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}" style="height:calc(100vh - 650rpx)">
+          <view class="cu-item text-cut {{index==TabCur?'text-thumb cur':''}}" wx:for="{{dishes}}" wx:key="dishes" bindtap='tabSelect' data-id="{{item.id}}" data-tabid="{{index}}">{{item.type_name}}</view>
+        </scroll-view>
+        <scroll-view class="vertical-main" scroll-y scroll-with-animation style="height:calc(100vh - 650rpx)" scroll-into-view="main-{{MainCur}}">
+          <view class="" wx:for="{{dishes}}" wx:key="dishes" id="main-{{index}}" wx:for-item="dishes" wx:for-index="cateindex">
+              <view class='cu-bar solid-bottom bg-white'>
+                <view class='action'><text class='text-black'></text>{{dishes.type_name}} </view>
+              </view>
+              <view class="cu-list menu-avatar">
+                <!-- <navigator hover-class="none" open-type="navigate" url="/pages/store/good/index"> -->
+                <!-- <view class="cu-item" bindtap="goGoodDeatil" data-url="/pages/store/good/index?shopid={{item.shop_id}}&goodid={{item.product_id}}" wx:for="{{dishes.goods}}" wx:key="categoods"> -->
+                <view class="cu-item" wx:for="{{dishes.goods}}" wx:key="categoods">
+                  <view class="cu-avatar" style="background-image:url({{item.img}});" bindtap="goGoodDeatil" data-url="/pages/store/good/index?shopid={{item.shop_id}}&goodid={{item.product_id}}&goodIndex={{index}}&cateindex={{cateindex}}">
+                  <view class="shopstatus" wx:if="{{item.is_promotion==1}}">促销</view>
+                  </view>
+                  <view class="content" bindtap="goGoodDeatil" data-url="/pages/store/good/index?shopid={{item.shop_id}}&goodid={{item.product_id}}">
+                    <view class="text-black good-title text-cut">{{item.name}}</view>
+                    <view class="text-sm flex tags">
+                      <block>
+                        <text class="cu-tag line-thumb">仅剩{{item.num}}份</text>
+                      </block>
+                    </view>
+                    <view class="text-sales">
+                      <text>售 {{item.sold_num}}</text>
+                    </view>
+                    <view class="good-price">
+                      <text class="text-price text-thumb now-price">{{item.price}}</text>
+                      <text class="text-price market-price">{{item.cost_price}}</text>
+                    </view>
+                  </view>
+                  <!-- 有规格 -->
+                  <block wx:if="{{item.is_options==1}}">
+                    <view class="action">
+                      <view class="select-spec bg-thumb" bindtap="goodSelectSpec" data-good="{{item}}" data-goodIndex="{{index}}" data-cateIndex="{{cateindex}}">选择规格</view>
+                    </view>
+                  </block>
+                  <!-- 没有规格 -->
+                  <block wx:else>
+                    <view class="action">
+                      <button class="cu-btn icon button-hover" bindtap="reduceCart2" data-good="{{item}}" data-goodIndex="{{index}}" data-cateIndex="{{cateindex}}" disabled="{{item.buy<=0?true:false}}">-</button>
+                      <text class="good-num">{{item.buy_num?item.buy_num:0}}</text>
+                      <button class="cu-btn icon button-hover bg-thumb text-white" data-good="{{item}}" data-goodIndex="{{index}}" data-cateIndex="{{cateindex}}" bindtap="goodSelectSpec">+</button>
+                    </view>
+                  </block>
+
+                </view>
+                <!-- </navigator> -->
+              </view>
+          </view>
+        </scroll-view>
+      </view>
+      <view class="bottom-btn-view">
+        <view class="bottom-btn flex justify-center align-center">
+          <view class="info-cost bg-black grid col-1 ">
+            <view class="text-cost flex align-end">应付：<text class="text-price">{{total_price}}</text></view>
+            <view class="text-benefit">起送 <text class="text-price">{{store.since_money}}</text></view>
+          </view>
+          <view class="go-pay bg-thumb" bindtap="goPay">去结算</view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:elif="{{NavCur==2}}">
+    <block wx:if="{{store.star==0}}">
+      <view class="empty-view flex justify-center align-center">
+        <view class="empty-box">
+          <view class="cuIcon-info text-gray"></view>
+          <view class="no-data-text">该店铺暂时没有任何评价！</view>
+          <navigator class="cu-btn bg-thumb lg shadow radius" openType="switchTab" url="/pages/index/index">去首页逛逛吧</navigator>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="comment-view margin-top">
+        <view class="comment-head">
+          <view class="thumb-color fl margin-right-xs store-star"><text style="font-size:64rpx;">{{store.star}}</text> 分</view>
+          <view class="rank-all">
+            <text class="cuIcon-favorfill gray comment-star" wx:for="{{5}}" style="left:{{index*20+134}}rpx;"></text>
+            <view><text class="cuIcon-favorfill thumb-color comment-star" wx:for="{{store.star}}" style="left:{{index*20+134}}rpx;"></text></view>
+            <!-- <text class="cuIcon-favorfill thumb-color comment-star" wx:for="{{5}}"></text> -->
+          </view>
+          <view class="comment-count">评论({{commentCount}})</view>
+        </view>
+        <view class="comment-list">
+          <view class="list-item flex" wx:for="{{commentList}}" wx:key="commentList">
+            <view class="item-avatar"><image src="{{item.avatar}}"></image></view>
+            <view class="item-info margin-left">
+              <view class="info-user">
+                <view class="info-username">{{item.username}}</view>
+                <view class="flex align-center justify-between">
+                  <view class="item-rank">
+                    <text class="cuIcon-favorfill {{item.star>star?'thumb-color':'gray'}} rank-star" wx:for="{{5}}" wx:for-index="star" wx:for-item="starItem" wx:key="star"></text>
+                  </view>
+                  <view><text class="info-date">{{item.date}}</text></view>
+                </view>
+              </view>
+              <view class="info-content {{item.showAll?'':'text-hiden'}}">
+                {{item.contents}}
+              </view>
+              <view class="read-all" bindtap="readAll" data-showall="{{item.showAll}}" data-id="{{item.dianping_id}}" wx:if="{{item.contents.length>=72}}">{{item.showAll?'收起':'阅读全部'}}</view>
+              <!-- 评论图片 -->
+              <view class="info-image">
+                <view class="img fl" wx:for="{{item.imageList}}" wx:key="imageList" wx:for-item="image">
+                  <image bindtap="preview" data-src="{{image}}" data-urls="{{item.imageList}}" src="{{image}}"></image>
+                </view>
+              </view>
+              <!-- 店主回复 -->
+              <view class="info-reply" wx:if="{{item.is_reply}}">
+                <view class="store-reply">商家回复</view>
+                <view class="reply-content">{{item.reply}}</view>
+                <view class="reply-date">{{item.reply_date}}</view>
+              </view>
+              <!-- 赞和踩 -->
+              <!-- <view class="info-point flex justify-end">
+                <view class="point-like" bindtap="isLike" data-id="{{item.id}}"><text class="cuIcon-appreciate{{item.isLike?'fill cur':''}}"></text>{{item.like?item.like:0}}</view>
+                <view class="point-unlike" bindtap="isUnLike" data-id="{{item.id}}"><text class="cuIcon-appreciate{{item.isUnLike?'fill cur':''}}"></text>{{item.unLike?item.unLike:0}}</view>
+              </view> -->
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </block>
+  <block wx:elif="{{NavCur==3}}">
+    <view class="brief-view">
+      <view class="brief-contact flex justify-around align-center">
+        <text class="cuIcon-location"></text>
+        <view class="text-cut address">{{store.address}}</view>
+        <text style="width:4rpx;height:30rpx;background-color:var(--hex-CCCCCC);"></text>
+        <text class="cuIcon-phone" bindtap="goPhone" data-phone="{{store.tel}}"></text>
+      </view>
+      <view class="store-image">
+        <scroll-view scroll-x="true">
+          <view wx:for="{{store.environment}}" wx:key="storeImage" wx:for-item="image"><image src="{{image}}" bindtap="preview" data-src="{{image}}" data-urls="{{store.environment}}"></image></view>
+        </scroll-view>
+      </view>
+      <view class="box"></view>
+      <view class="store-server">
+        <view class="cu-form-group flex justify-start">
+          <view class="title">配送服务</view>
+          <view class="server-text">商家自行配送</view>
+        </view>
+        <view class="cu-form-group flex justify-start">
+          <view class="title">营业时间</view>
+          <view class="server-text">{{store.busihour}}</view>
+        </view>
+      </view>
+      <view class="box"></view>
+      <view class="store-brief">
+        <view class="cu-form-group flex justify-start">
+          <view class="title">商家服务</view>
+          <view class="server-list">
+            <view class="server-item" wx:if="{{store.is_full}}"><text>送</text>免费配送</view>
+          </view>
+        </view>
+        <view class="cu-form-group flex justify-start align-start">
+          <view class="title">商家简介</view>
+          <view class="server-text" style="margin: 32rpx 0 30rpx;">{{store.details}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+<view class="cu-modal {{showSpecModal?'show':''}} spec-view">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">{{curGood.name}}</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding">
+      <view class="spec-list">
+        <view class="spec-head">规格:</view>
+        <block wx:for="{{spec}}" wx:key="spec"><text class="spec-item {{index==curSpecIndex?'cur':''}}" bindtap="selectSpec" data-index="{{index}}">{{item.name}}</text></block>
+      </view>
+    </view>
+    <view class="cu-bar bg-white justify-between">
+      <view class="action align-baseline">
+        <view class="text-price thumb-color text-bold">{{specCur.cost}}</view>
+        <view class="text-price" style="margin-left:20rpx;font-size:24rpx;text-decoration:line-through">{{curGood.cost_price}}</view>
+      </view>
+      <block wx:if="{{curGood.options[curSpecIndex].buy_num==0}}">
+        <view class="action">
+          <button class="cu-btn bg-green margin-left add-cart" bindtap="addCart" >加入购物车</button>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="action">
+          <button class="cu-btn icon button-hover bg-gray" bindtap="reduceCart">-</button>
+          <text class="good-num">{{curGood.options[curSpecIndex].buy_num}}</text>
+          <button class="cu-btn icon button-hover bg-thumb text-white" bindtap="addCart">+</button>
+        </view>
+      </block>
+      <!-- <view class="action">
+        <button class="cu-btn bg-green margin-left add-cart" bindtap="addCart" >加入购物车</button>
+      </view> -->
+    </view>
+  </view>
+</view>

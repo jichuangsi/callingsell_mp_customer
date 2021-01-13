@@ -1,0 +1,16 @@
+.page-view{}
+.nav .cu-item{margin:0;padding:0;width:50%;color:var(--hex-999999);}
+.nav .cu-item.cur{color:var(--black);border:none;}
+.nav .cu-item.cur .tab-item{height:86rpx;width: fit-content;margin: 0 auto;border-bottom:4rpx solid var(--black);}
+/*预约列表*/
+.list-view{ padding:30rpx;}
+.list-item{border-radius: 10rpx;}
+.list-item-info{padding: 20rpx;}
+.list-item .item-head{font-size: 32rpx;font-weight: bold;color: var(--black);}
+.list-item .item-state{font-size: 32rpx;font-weight: bold;color: var(--thumb-color);}
+.list-item .item-good{}
+.list-item .item-num{}
+.get-order-btn{height:90rpx;line-height:90rpx;background: var(--thumb-color);color: white;border-radius: 10rpx;text-align: center;}
+.list-item+.list-item{margin-top: 30rpx;}
+.justify-between+.justify-between{margin-top: 20rpx;}
+

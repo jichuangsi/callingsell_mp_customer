@@ -1,0 +1,129 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">订单详情</view>
+</cu-custom>
+<view class="page-view">
+  <view class="step-view bg-white padding">
+    <view style="margin-bottom: 20rpx;">订单进度</view>
+    <view class="cu-steps">
+      <view class="cu-item {{(order.state==6||order.state==4?8:order.state)<=item.state?'':'text-green'}}" wx:for="{{stateList}}" wx:key="stateList">
+        <text class="num {{(order.state==6||order.state==4?8:order.state)==item.state+1?'cur':''}}"></text>
+        {{item.statename}}
+      </view>
+    </view>
+  </view>
+  <view class="order-contact bg-white" style="border-bottom:4rpx solid transparent;border-image: url(../../../../images/border-bg.png) 30 round;">
+    <view class="buyer flex align-center justify-between">
+      <view>收货人：{{address.name}}</view>
+      <view>{{address.mobile}}</view>
+    </view>
+    <view class="address">收货地址：<text>{{address.addressDetail}}</text></view>
+  </view>
+  <view class="order-info">
+    <view class="order-goods margin-bottom">
+      <view class="good-item">
+        <view class="store flex align-center">
+          <view class="storeName">{{store.shop_name}}</view>
+        </view>
+        <block wx:for="{{goods}}" wx:key="goods">
+        <view class="goods flex align-center">
+          <view class="goodspec">
+            <view class="goodimg"><image src="{{item.photo}}"></image></view>
+            <view class="title">{{item.product_name}}</view>
+            <view class="spec text-cut">规格</view>
+            <view class="num">x{{item.num}}</view>
+            <view class="price"><text class="text-price">{{item.cost_price}}</text><text class="text-price">{{item.money}}</text></view>
+          </view>
+        </view>
+        </block>
+        <view class="otherFee margin-bottom">
+          <view class="packing">
+            <view>包装费</view>
+            <view class="text-price">{{order.tableware_price}}</view>
+          </view>
+          <view class="delivery">
+            <view>配送费</view>
+            <view class="text-price">{{order.logistics}}</view>
+          </view>
+          <view class="newUser" wx:if="{{order.new_money>0}}">
+            <view>新人立减</view>
+            <view>- <text class="text-price">{{order.new_money}}</text></view>
+          </view>
+          <view class="delivery" wx:if="{{order.preferential>0}}">
+            <view>满减优惠</view>
+            <view class="text-thumb">- <text class="text-price">{{order.preferential}}</text></view>
+          </view>
+        </view>
+        <view class="total-price padding-top">
+          <text class="cost-text">商品小计</text>
+          <text class="text-price total-cost text-bold text-thumb">{{order.money}}</text>
+        </view>
+      </view>
+    </view>
+    <!-- 备注 -->
+    <view class="order-remarks bg-white margin-bottom padding-sm">
+      <view class="remarks-head">备注：</view>
+      <view class="remarks-content">{{order.note}}</view>
+    </view>
+    <!-- 详细信息 -->
+    <view class="order-detail bg-white padding-sm">
+      <view class="order-head margin-bottom-xs">订单信息</view>
+      <view class="cu-form-group">
+        <view class="title">订单号：</view>
+        <view>{{order.orderCode}}</view>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">创建时间：</view>
+        <view>{{order.time}}</view>
+      </view>
+      <view class="cu-form-group">
+        <view class="title">支付方式：</view>
+        <view>{{order.code!="daofu"?'线上支付':'货到付款'}}</view>
+      </view>
+      <view class="cu-form-group solid-bottom">
+        <view class="title">{{order.is_pay==1?'实':'待'}}付款：</view>
+        <view class="thumb-color">{{order.pay_time?order.money:'等待用户付款'}}</view>
+      </view>
+      <view class="store-contact flex justify-end align-center">
+        <!-- <view class="btn-contact"><navigator class="cu-btn round line-black">联系商家</navigator></view> -->
+        <!-- <view class="btn-contact"><text class="cu-btn round line-black" bindtap="goPhone" data-phone="{{store.tel}}">联系商家</text></view>
+        <view class="cuIcon-titles"></view> -->
+        <view class="btn-phone" style="flex:inherit;"><text class="cu-btn round line-black" bindtap="goPhone" data-phone="{{store.tel}}">拨打电话</text></view>
+      </view>
+    </view>
+  </view>
+  <view class="bottom-btn-view solid-top">
+    <!-- <navigator class="cu-btn round line-black shadow btn-cancel" wx:if="{{item.cancancel}}">取消订单</navigator> -->
+    <!-- <navigator class="cu-btn round line-black shadow btn-cancel" wx:if="{{item.status==2}}">联系商家</navigator>
+    <navigator class="cu-btn round line-black shadow btn-cancel" wx:if="{{item.status==2}}">查看进度</navigator>
+    <navigator class="cu-btn round line-black shadow btn-cancel" wx:if="{{item.candelete}}">删除订单</navigator>
+    <navigator class="cu-btn round line-black shadow btn-cancel" wx:if="{{(item.status==1||item.status==3)&&item.paytype!=0}}">查看订单</navigator>
+    <navigator class="cu-btn round line-thumb shadow btn-pay" wx:if="{{item.status==0&&item.paytype==0}}">立即支付</navigator>
+    <navigator class="cu-btn round line-thumb shadow btn-pay" wx:if="{{item.status==1&&item.paytype!=0}}">我要催单</navigator>
+    <navigator class="cu-btn round line-thumb shadow btn-pay" wx:if="{{item.status==2&&item.paytype!=0}}">确认收货</navigator>
+    <navigator class="cu-btn round line-thumb shadow btn-pay" wx:if="{{item.cancomment}}">我要评价</navigator> -->
+    <!-- <view class="cu-btn round line-black shadow btn-cancel"><picker bindchange="PickerChange" value="{{index}}" range="{{picker}}">取消订单</picker></view> -->
+    <view class="cu-btn round line-black shadow btn-cancel" bindtap="cancelOrder" wx:if="{{order.state==0}}">取消订单</view>
+    <navigator class="cu-btn round line-thumb shadow btn-pay" wx:if="{{order.state==0}}" bindtap="goToPay" data-id="{{order.id}}" data-money="{{order.money}}">去付款</navigator>
+    <!-- <navigator class="cu-btn round line-black shadow btn-cancel" wx:if="{{order.state==1}}">查看进度</navigator> -->
+    <navigator class="cu-btn round line-thumb shadow btn-pay" wx:if="{{order.state==2}}" bindtap="CompleteOrder">确认收货</navigator>
+    <navigator class="cu-btn round line-black shadow btn-cancel" wx:if="{{order.state==8}}" bindtap="ttt">删除订单</navigator>
+    <navigator class="cu-btn round line-thumb shadow btn-pay" wx:if="{{order.state==8&&order.is_dianping!=1}}" bindtap="goUrl" data-url="/pages/member/comment/post?id={{item.id}}">我要评价</navigator>
+    <!-- <view class="cu-btn round line-black shadow btn-cancel" bindtap="refun" data-id="{{order.id}}">退款</view> -->
+  </view>
+</view>
+
+<view class="cu-modal bottom-modal {{showModal?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white">
+      <view class="action text-gray" bindtap="hideModal">取消</view>
+      <view class="action text-thumb" bindtap="cancelSure">确定</view>
+    </view>
+    <view>
+      <picker-view indicator-style="height: 50px;" style="width: 100%; height: 200px;" value="{{value}}" bindchange="PickerChange">
+        <picker-view-column>
+          <view wx:for="{{picker}}" style="line-height: 50px">{{item}}</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </view>
+</view>

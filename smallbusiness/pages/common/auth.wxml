@@ -1,0 +1,20 @@
+<view class="cu-modal {{showAuthorizeModal?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">提示</view>
+      <view class="action" bindtap="_hideModal">
+        <text class="cuIcon-close text-gray"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      <view>你还没有授权。</view>
+      是否去授权登录
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="_hideModal">取消</button>
+        <button class="cu-btn bg-green margin-left" bindgetuserinfo="_getUserInfo" openType="getUserInfo">确定</button>
+      </view>
+    </view>
+  </view>
+</view>

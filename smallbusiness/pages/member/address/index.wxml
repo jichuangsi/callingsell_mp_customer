@@ -1,0 +1,33 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">地址管理</view>
+</cu-custom>
+<view class="page-view">
+  <view class="none-data" wx:if="{{addressList.length<1}}">
+    <view class="no-data-img" style="background:url({{staticurl}}no-data.png) no-repeat;"></view>
+    <text class="no-data-text">暂无数据</text>
+  </view>
+  <view class="address-list cu-list" wx:if="{{addressList.length>0}}">
+  <block wx:for="{{addressList}}" wx:key="addressList">
+    <!-- <view class="list-item flex justify-between align-center bg-white cu-item {{modalName=='move-box-'+ index?'move-cur':''}}" bindtouchstart="ListTouchStart" bindtouchmove="ListTouchMove" bindtouchend="ListTouchEnd"  data-target="move-box-{{index}}"> -->
+    <view class="list-item flex justify-between align-center bg-white cu-item}}" data-target="move-box-{{index}}" bindtap="checkaddress" data-item="{{item}}">
+      <!-- <view class="checkbox-view" data-id="{{item.addr_id}}">
+        <checkbox-group><checkbox class="round thumb-color" value="{{item.addr_id}}"></checkbox></checkbox-group>
+      </view> -->
+      <view class="address-view" data-id="{{item.addr_id}}">
+        <view class="contact">{{item.name}} {{item.mobile}}</view>
+        <view class="text-cut address margin-top-xs">{{item.addr}}</view>
+      </view>
+      <!-- <view class="edit-view" bindtap="editAddress" data-id="{{item.addr_id}}"><text class="cuIcon-post"></text></view> -->
+      <view class="move">
+        <view class="edit-view" bindtap="editAddress" data-id="{{item.addr_id}}"><text class="cuIcon-post"></text></view>
+        <view class="bg-red" bindtap="deleteAddress" data-id="{{item.addr_id}}"><text class="cuIcon-delete"></text></view>
+      </view>
+    </view>
+  </block>
+
+  </view>
+  <view class="add-address solid-top" bindtap="goAddAddress">
+    <text class="cuIcon-roundadd"></text>
+    新增新地址
+  </view>
+</view>

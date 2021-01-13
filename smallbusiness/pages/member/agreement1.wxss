@@ -1,0 +1,22 @@
+/* pages/member/agreement1.wxss */
+.cu-bar .content {
+  text-align: left !important;
+  left: 80rpx !important;
+}
+.cu-custom .cu-bar .content {
+  width: auto;
+}
+.agreement_center {
+  padding: 20rpx 30rpx;
+}
+.agreement div {
+  flex: 1;
+font-size: 32upx;
+line-height: 46upx;
+}
+h1 {
+font-size: 36upx;
+}
+p {
+text-indent: 2em;
+}

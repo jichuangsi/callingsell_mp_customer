@@ -1,0 +1,12 @@
+/* .cu-list>.cu-item {margin-top:20rpx;height: 190rpx;width:100%;} */
+.cu-list>.cu-item .content {padding:30rpx 30rpx 0 30rpx;top:0;left:250rpx;width:310rpx;}
+.cu-avatar{width:200rpx;height: 200rpx;}
+.good-title{display:block!important;width:320rpx;font-size: 26rpx;font-weight: bold;}
+.tags{margin-top:10rpx;min-height: 36rpx;}
+.tags .cu-tag {padding:0 8rpx;height:36rpx;font-size:22rpx;background: var(-hex-FFE7E9);}
+.tags .cu-tag[class*="line-"]::after { border-radius: 5rpx;}
+.text-sales{margin-top:10rpx;font-size:22rpx;color:var(--hex-999999);}
+.text-sales text{margin-right: 20rpx;}
+.good-price{}
+.now-price{font-size:30rpx;font-weight: bold;margin-right:20rpx;}
+.market-price{font-size:24rpx;color:var(--hex-999999);text-decoration: line-through;}

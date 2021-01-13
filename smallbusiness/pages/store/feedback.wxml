@@ -1,0 +1,64 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">意见反馈</view>
+</cu-custom>
+<view class="page-view">
+    <view class="feedback-type">
+      <view class="head-title">反馈问题类型</view>
+      <view class="type-item flex">
+        <text class="{{postData.cate==1?'selected':''}}" data-type="cate" data-value="1" bindtap="onDataChange">功能异常</text>
+        <text class="{{postData.cate==2?'selected':''}}" data-type="cate" data-value="2" bindtap="onDataChange">体验问题</text>
+        <text class="{{postData.cate==3?'selected':''}}" data-type="cate" data-value="3" bindtap="onDataChange">功能建议</text>
+        <text class="{{postData.cate==4?'selected':''}}" data-type="cate" data-value="4" bindtap="onDataChange">其他问题</text>
+      </view>
+    </view>
+    <view class="text-area ">
+      <view class="cu-form-group">
+        <textarea name="content" id="content" maxlength="202" data-type="content" value="{{postData.content}}" bindinput="onTextAreaChange" placeholder="请选择问题类型,帮助我们更快的处理您的宝贵反馈。{{minLength>0?'最少'+minLength+'个字':''}}"></textarea>
+      </view>
+      <view class="limit-info">
+        {{contentLength}} / {{maxLength}}
+      </view>
+    </view>
+    <view class="upload-img">
+      <view class="cu-form-group">
+        <view class="grid col-4 grid-square flex-sub">
+          <view class="bg-img" wx:for="{{imgs}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgs[index]}}">
+            <image src='{{imgs[index]}}' mode='aspectFill'></image>
+            <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+              <text class="cuIcon-close"></text>
+            </view>
+          </view>
+          <view class="solids" bindtap="ChooseImage" wx:if="{{imgs.length<4}}">
+            <text class="cuIcon-cameraadd"></text>
+          </view>
+        </view>
+      </view>
+      <view class="img-limit">
+        {{imgs.length}} / 4
+      </view>
+    </view>
+    <view class="submit-btn" bindtap="onSubmit">提交</view>
+</view>
+<view class="cu-modal {{showDialogModal?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content"></view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="tips">
+      <view class="tips-icon"><image src="/images/success.png"></image></view>
+      <view class="tips-title">反馈成功</view>
+      <view class="tips-content">
+        <text>我们已经收到您的反馈</text>
+        <text>将会尽快处理</text>
+      </view>
+    </view>
+    <view class="cu-bar bg-white justify-center" style="height:150rpx;">
+      <view class="action btn-view">
+        <button class="cu-btn bg-thumb" bindtap="hideModal">我知道了</button>
+      </view>
+    </view>
+  </view>
+</view>

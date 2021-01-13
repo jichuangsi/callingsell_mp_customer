@@ -1,0 +1,73 @@
+<cu-custom bgColor="bg-white">
+  <view slot="content">购物车</view>
+</cu-custom>
+<view class="page-view">
+  <view class="cartView">
+    <view class="none-data" wx:if="{{cartViewShow==0&&!cartList}}">
+      <view class="no-data-img" style="background:url({{staticurl}}no-data.png) no-repeat;"></view>
+      <text class="no-data-text">暂无数据</text>
+    </view>
+    <view class="cartList" wx:else>
+    <block wx:for="{{cartList}}" wx:key="cartList">
+      <view class="listItem">
+        <view class="store flex align-center">
+          <view class="selectStore">
+            <checkbox-group bindchange="_selectStore" data-cartindex="{{index}}" data-cartid="{{item.cart_id}}">
+              <checkbox class="round thumb-color" checked="{{item.selected?1:''}}"></checkbox>
+            </checkbox-group>
+          </view>
+          <view class="storeName">{{item.shopname}}</view>
+          <view class="flex-sub clearStore" data-cartid="{{item.cart_id}}" data-shopid="{{item.shop_id}}" data-cartindex="{{index}}" bindtap="_delete">
+            <text class="cuIcon-delete"></text>删除
+          </view>
+        </view>
+        <block wx:for="{{item.goodlist}}" wx:for-index="goodindex" wx:for-item="good">
+        <view class="goods flex align-center">
+          <!-- <view class="selectStore"><text class="cuIcon-round lg text-gray"></text></view> -->
+          <view class="selectGood">
+            <checkbox-group bindchange="_selectGood" data-cartindex="{{index}}" data-goodindex="{{goodindex}}" data-goodid="{{good.product_id}}">
+              <checkbox class="round thumb-color" checked="{{good.selected?1:''}}"></checkbox>
+            </checkbox-group>
+          </view>
+          <view class="goodspec" bindtap="_selectGood" data-cartindex="{{index}}" data-goodindex="{{goodindex}}" data-goodid="{{good.product_id}}">
+            <view class="goodimg"><image src="{{good.photo}}"></image></view>
+            <view class="title">{{good.title}}</view>
+            <view class="spec text-cut">{{good.option_id!=0?good.option_name:'默认'}}</view>
+            <view class="num">x{{good.num}}</view>
+            <view class="price"><!-- <text class="text-price">46.00</text> --><text class="text-price realprice">{{good.total_price}}</text></view>
+          </view>
+        </view>
+        </block>
+        <!-- <view class="otherFee">
+          <view class="packing">
+            <view>包装费</view>
+            <view class="text-price">10</view>
+          </view>
+          <view class="delivery">
+            <view>配送费</view>
+            <view class="text-price">8</view>
+          </view>
+          <view class="newUser">
+            <view>新人立减</view>
+            <view>- <text class="text-price">5</text></view>
+          </view>
+        </view> -->
+        <view class="goPay flex"> 
+          <!-- <view class="flex-sub benefit flex align-center">已优惠 <text class="text-price">15</text></view> -->
+          <view class="flex-twice flex align-center justify-end">
+            <text class="text-price totalPrice">{{item.totalPrice}}</text>
+            <text class="goPayBtn thumb-shadow" bindtap="_goPay" data-cartindex="{{index}}">去结算</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    </view>
+    <view class="storeList" wx:if="{{storeList.length>0}}">
+      <view class="guessTitle">猜你喜欢</view>
+      <import src='../template/storelist.wxml' />
+      <block wx:for="{{storeList}}" wx:key="storeList" wx:for-item="store">
+        <template is="storelist" data="{{...store}}"></template>
+      </block>
+    </view>
+  </view>
+</view>

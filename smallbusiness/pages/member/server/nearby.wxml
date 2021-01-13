@@ -1,0 +1,31 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">附近商家</view>
+</cu-custom>
+<view class="page-view">
+  <view class="map-view">
+    <map
+      id="myMap"
+      style="width: 100%; height: {{pageView-85}}px;"
+      latitude="{{latitude}}"
+      longitude="{{longitude}}"
+      markers="{{markers}}"
+      covers="{{covers}}"
+      show-location
+    ></map>
+  </view>
+  <view class="btn-view" bindtap="showMore" style="{{showMore?'bottom:812rpx':''}}">
+    <view class="moreBtn"><text class="cuIcon-{{showMore?'un':''}}fold lg text-gray justify-center align-center"></text></view>
+  </view>
+  <view class="list-view padding-sm" style="{{showMore?'height:812rpx':''}}">
+    <scroll-view scroll-y="true" bindscrolltoupper="" bindscrolltolower="" bindscroll="" style="{{showMore?'height:790rpx':''}}">
+      <block wx:for="{{10}}" wx:key="store">
+        <view class="list-item">
+          <view class="item-store">麦当劳</view>
+          <view class="item-btn fr">查看路线</view>
+          <view class="item-text">距离我位置</view>
+          <view class="item-range">800</view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>

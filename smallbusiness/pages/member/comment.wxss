@@ -1,0 +1,31 @@
+/*评价view*/
+.comment-view{padding:0 30rpx;}
+.comment-head{margin-bottom:30rpx;}
+.store-star{width:124rpx;text-align: center;}
+.rank-all{position: relative; height: 30rpx; line-height: 30rpx;}
+.comment-star{position: absolute; margin-right:4rpx;font-size: 18rpx;}
+.comment-star.gray{margin-right:4rpx;font-size: 18rpx;}
+.comment-star.thumb-color{margin-right:4rpx;font-size: 18rpx;}
+.comment-count{margin-top:4rpx;font-size:22rpx;color:var(--hex-5C5C5C);}
+
+.comment-list{}
+.list-item{width: 100%;padding-bottom:30rpx;margin-bottom:30rpx;border-bottom:1rpx solid var(--hex-F1F1F1);background: #fff; padding: 30rpx;border-radius: 10rpx;}
+.item-avatar{/*flex:1;margin-top:10rpx;*/width: 100rpx;height: 100rpx;}
+.item-avatar image{width: 100%;height: 100%;}
+.item-info{flex: 9;}
+.info-username{font-size: 32rpx;color:var(--hex-252525);}
+.rank-view{margin-top:20rpx;}
+.item-rank{position: relative;}
+.rank-star{margin-right:4rpx;font-size: 22rpx;}
+.info-date{font-size: 24rpx;color:var(--hex-5C5C5C);}
+.info-content{margin-top: 20rpx;font-size:28rpx;line-height: 42rpx;}
+.read-all{font-size:24rpx;color:var(--hex-2E6EFF);text-align: right;}
+.info-image {margin:20rpx 0; overflow: hidden;}
+.info-image .img{width: 160rpx;height: 160rpx;}
+.info-image .img image{width: 160rpx;height: 160rpx;}
+.info-image::after{content:"";clear:both;}
+/*店主回复*/
+.info-reply{padding:20rpx;background: var(--hex-F5F5F5);}
+.store-reply{font-size:24rpx;color:var(--black);font-weight: bold;}
+.reply-content{font-size:22rpx;color:var(--black);}
+.reply-date{font-size: 20rpx;color:var(--hex-5C5C5C);text-align: right;}

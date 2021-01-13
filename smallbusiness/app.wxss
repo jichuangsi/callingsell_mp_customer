@@ -1,0 +1,87 @@
+@import "colorui/main.wxss";
+@import "colorui/icon.wxss";
+page{
+  --thumb-color:#C02C38;
+  --thumbShadow: rgba(192, 44, 56, 0.2);
+  /*颜色*/
+  --hex-252525:#252525;
+  --hex-2E6EFF:#2E6EFF;
+  --hex-343434:#343434;
+  --hex-5C5C5C:#5C5C5C;
+  --hex-666666:#666666;
+  --hex-808080:#808080;
+  --hex-999999:#999999;
+  --hex-9A9A9A:#9A9A9A;
+  --hex-B5B5B5:#B5B5B5;
+  --hex-CCCCCC:#CCCCCC;
+  --hex-F1F1F1:#F1F1F1;
+  --hex-F5F5F5:#F5F5F5;
+  --hex-F8F8F8:#F8F8F8;
+  --hex-F9F9F9:#F9F9F9;
+  --hex-FFB43D:#FFB43D;
+  --hex-FFE7E9:#FFE7E9;
+  background: #F9F9F9;
+}
+/*重写复选框样式*/
+checkbox .wx-checkbox-input{width: 30rpx;height: 30rpx;border-color: var(--gray)!important;}
+checkbox::before {margin-top: -12rpx!important;right: 4rpx!important;font-size: 24rpx!important;font-weight: bold;}
+checkbox::before {text-align: center;}
+checkbox.thumb-color[checked] .wx-checkbox-input{
+  background: var(--thumb-color) !important;
+  border-color: var(--thumb-color) !important;
+}
+/*相关主题颜色*/
+.tabbar-active,.thumb-color,.text-thumb,.line-thumb, .lines-thumb{
+  color:var(--thumb-color);
+}
+.bg-thumb {
+  background-color: var(--thumb-color);
+  color: var(--white);
+}
+.shadow[class*="-thumb"] {
+	box-shadow: var(--ShadowSize) var(--thumbShadow);
+}
+
+/*新用户*/
+.newUser .newFont{padding: 2rpx; margin-right: 16rpx; width: 30rpx; height: 28rpx; background: #C02C38; border-radius: 5rpx; color: #FFFFFF;font-size: 22rpx;}
+.newUser .newText{font-size: 22rpx; color: #666666;}
+/*满减*/
+.fullReduce .reduceFont{padding: 2rpx; margin-right: 16rpx; width: 30rpx; height: 28rpx; color: #FFFFFF;font-size: 22rpx; background: #FF5B02; border-radius: 5rpx;}
+.fullReduce .reduceText{font-size: 22rpx; color: #666666;}
+
+/*评论内容隐藏*/
+.text-hiden{
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.line-clamp-1{-webkit-line-clamp: 1;}
+.line-clamp-2{-webkit-line-clamp: 2;}
+.line-clamp-3{-webkit-line-clamp: 3;}
+/*表单项之间的边框*/
+.cu-form-group+.cu-form-group {	border-top: 1rpx solid var(--hex-F5F5F5);}
+/* 底部提交按钮样式 */
+.submit-btn{position: absolute;bottom: 100rpx; margin:0 30rpx;height: 88rpx;line-height:88rpx;width: 690rpx;background: var(--thumb-color);color:var(--white);text-align: center;border-radius:44rpx;}
+/*dialog 提示框*/
+.cu-dialog{width:550rpx;}
+.tips{padding: 0 50rpx; background: var(--white);}
+.tips-icon{height:161rpx;width:125rpx;margin:0 auto;}
+.tips-icon image{height:161rpx;width:125rpx;}
+.tips-title{margin:20rpx 0; display: block;font-size: 30rpx;font-weight: bold; color: var(--black);}
+.tips-content text{display: block;font-size: 28rpx;color: var(--hex-999999);}
+.cu-dialog .btn-view{width:430rpx;}
+.cu-dialog .btn-view button{width:100%;height: 88rpx;}
+
+/* 没有数据 */
+.none-data{margin-top: 150rpx;}
+.no-data-img{height:406rpx;width:646rpx;margin: 0 auto;}
+.no-data-text{display: block;margin-top:50rpx;color: var(--hex-999999);text-align: center;}
+
+/*没有更多*/
+.no-more{text-align: center; padding: 10rpx 0; color: #ccc; font-size: 24rpx;}
+
+

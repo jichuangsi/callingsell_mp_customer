@@ -1,0 +1,12 @@
+<!-- 搜索框 -->
+<view class="cu-bar search bg-white search-view">
+  <view class="search-form round">
+    <text class="cuIcon-search"></text>
+    <input type="text" placeholder="请输入商家名称" confirm-type="search" bindtap="goSearch"></input>
+  </view>
+  <view class="action" bindtap="goUrl" data-url="/pages/member/notice/list">
+    <text class="cuIcon-message"></text>
+    <!-- <button class="cu-btn bg-green shadow-blur round">搜索</button> -->
+  </view>
+</view>
+  

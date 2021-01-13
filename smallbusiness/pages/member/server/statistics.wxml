@@ -1,0 +1,88 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">消费统计</view>
+</cu-custom>
+<view class="page-view">
+  <view class="bg-img bg-mask padding-tb-xl" style="background-image: url('../../../images/banner-01.png');height: 320rpx;">
+    <view class="padding-lr-xl text-white statistics">
+      <view class="padding-xs total-text">交易总额</view>
+      <view class="padding-xs"><view class="total-border"></view></view>
+      <view class="padding-xs total-num">{{total}}</view>
+    </view>
+  </view>
+  <view class="pay-list">
+    <!-- <view class="list-item">
+      <view class="item-date flex justify-between">
+        <view>2020-01-01</view>
+        <view>
+          <text class="text-price date-price">90000</text>
+          <text class="cuIcon-unfold"></text>
+        </view>
+      </view>
+      <view class="item-store-list">
+        <view class="store-item">
+          <view class="store-name margin-bottom">麦当劳麦乐送（广州天河店）</view>
+          <view class="store-goods-list">
+            <view class="goods-list-item flex">
+              <view class="good-image"><image src="../../../images/cart.png"></image></view>
+              <view class="good-info">
+                <view class="good-title text-cut">双层麦辣鸡翅堡套餐双层麦辣鸡翅堡双层麦辣鸡翅堡</view>
+                <view class="good-spec">规格：大</view>
+                <view class="good-num"><text class="cuIcon-close"></text>1</view>
+              </view>
+            </view>
+          </view>
+          <view class="store-total">
+            <text class="store-total-text">商品小计</text>
+            <text class="text-price">60</text>
+          </view>
+        </view>
+      </view>
+    </view> -->
+    <view class="list-item" bindtap="showInfo">
+      <view class="item-date flex justify-between">
+        <view>2020-01-02</view>
+        <view>
+          <text class="text-price date-price">90000</text>
+          <text class="cuIcon-unfold animation-{{show?'rotate-downtoright':'rotate-righttodown'}}"></text>
+        </view>
+      </view>
+      <view class="item-store-list {{show?'show':'hidden'}}">
+        <view class="store-item">
+          <view class="store-name margin-bottom">麦当劳麦乐送（广州天河店）</view>
+          <view class="store-goods-list">
+            <view class="goods-list-item flex">
+              <view class="good-image"><image src="../../../images/cart.png"></image></view>
+              <view class="good-info">
+                <view class="good-title text-cut">双层麦辣鸡翅堡套餐双层麦辣鸡翅堡双层麦辣鸡翅堡</view>
+                <view class="good-spec">规格：大</view>
+                <view class="good-num"><text class="cuIcon-close"></text>1</view>
+              </view>
+            </view>
+          </view>
+          <view class="store-total">
+            <text class="store-total-text">商品小计</text>
+            <text class="text-price">60</text>
+          </view>
+        </view>
+
+        <view class="store-item">
+          <view class="store-name margin-bottom">麦当劳麦乐送（广州天河店）</view>
+          <view class="store-goods-list">
+            <view class="goods-list-item flex">
+              <view class="good-image"><image src="../../../images/cart.png"></image></view>
+              <view class="good-info">
+                <view class="good-title text-cut">双层麦辣鸡翅堡套餐双层麦辣鸡翅堡双层麦辣鸡翅堡</view>
+                <view class="good-spec">规格：大</view>
+                <view class="good-num"><text class="cuIcon-close"></text>1</view>
+              </view>
+            </view>
+          </view>
+          <view class="store-total">
+            <text class="store-total-text">商品小计</text>
+            <text class="text-price">60</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

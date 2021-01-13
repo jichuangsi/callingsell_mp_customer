@@ -1,0 +1,35 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">商家入驻</view>
+</cu-custom>
+<view class="page-view">
+  <view class="select-item" bindtap="goUrl" data-type="store">
+    <view class="item-title">固定商铺</view>
+    <image src="{{staticurl}}joinus-shop.png" alt="" class="item-icon"></image>
+    <view class="item-btn">申请入驻</view>
+  </view>
+  <view class="select-item" bindtap="goUrl" data-type="stall">
+    <view class="item-title">流动摊位</view>
+    <image src="{{staticurl}}joinus-stall.png" alt="" class="item-icon"></image>
+    <view class="item-btn">申请入驻</view>
+  </view>
+</view>
+<view class="conter">
+  <view class="title">一、开店费用说明</view>
+  <view class="title">开通店铺本身不收取任何费用。需注意以下几种情况：</view>
+  <view class="text">1、店铺开通后免费试用期为1-3个月，试用期过后收取不超过10元的固定月租费。</view>
+  <view class="text">2、订单货到付款的，平台不单独收取每单费用。</view>
+  <view class="text">3、通过平台在线付款的，平台收取每笔订单金额2%的服务费。（需申请开通）</view>
+  <view class="text">4、平台建议送货方式为商家自行配送，如需拎手员配送，则由商家自行发布配送任务，拎手员配送费用标准平台暂订1元/单。</view>
+  <view class="title">二、所需材料。</view>
+  <view class="text">5、门店照片。</view>
+  <view class="text">6、营业执照。</view>
+  <view class="text">7、食品经营许可证（涉及食品的店铺）。</view>
+  <view class="title">三、提交成功后，24小时内完成审核。</view>
+  <view class="title center">开店须知（流动摊档）</view>
+  <view class="text">1、流动摊档在平台开店，平台不收取任何开通费用，暂时只提供货到付款方式。</view>
+  <view class="text">2、店铺开通后免费试用期为1-3个月，试用期过后收取不超过5元的固定月租费。</view>
+  <view class="text">3、平台建议商家自行配送，如需拎手员配送，则需自行发布配送任务，拎手员配送费用标准平台暂订1元/单。由商家自行决定并支付。</view>
+  <view class="text">4、需提供摊主和摊位合影照片、身份证。</view>
+  <view class="text">5、一个手机号码和身份证只能免费在一个地点开店。</view>
+  <view class="title">提交成功后，24小时内完成审核</view>
+</view>

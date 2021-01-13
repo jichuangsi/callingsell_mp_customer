@@ -1,0 +1,68 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">当前预约</view>
+</cu-custom>
+<view class="page-view">
+  <block>
+    <view class="list-view">
+      <view class="list-item bg-white">
+        <view class="list-item-info">
+          <view class="flex justify-between align-center">
+            <view class="item-head">想要购买的商品</view>
+          </view>
+        </view>
+        <view class="list-item-info">
+          <view class="flex justify-between align-center">
+            <view class="item-good">{{item.content}}</view>
+          </view>
+          <view class="flex justify-between align-center">
+            <view class="item-good">区间价格（元）</view>
+            <view class="item-num">{{item.min_price}} 一 {{item.max_price}}</view>
+          </view>
+          <!-- <view class="flex justify-between align-center">
+            <view class="item-good">配送费</view>
+            <view class="item-num">￥{{item.logistic}}</view>
+          </view> -->
+        </view>
+      </view>
+        <view class="list-item">
+          <view class="list-item-info">
+            <view class="flex justify-between align-center">
+              <view class="item-head">商家报价列表 <text>{{item.shopList.length>0?'':'（暂无商家抢单）'}}</text></view>
+            </view>
+          </view>
+        </view>
+        <!-- 商家列表 -->
+        <view class="list-item bg-white" wx:for="{{item.shopList}}" wx:key="shopList" wx:for-item="shop">
+          <view class="center">
+            <view class="l_img">
+              <image src="{{shop.photo}}"></image>
+            </view>
+            <view class="c_conter">
+              <view class="c_t">{{shop.shop_name}}</view>
+              <view class="c_b">
+                <view class="b_p">￥{{shop.price}}</view>
+                <picker mode="selector" range="{{multiArray}}" bindchange="CategoryChange" value="0">
+                  <view class="b_btn" bindtap="check" data-id="{{shop.id}}">选择此商家</view>
+                </picker>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!-- 选择支付状态 -->
+        
+        
+        <!-- 弹窗 -->
+        <view class="show" wx:if="{{show}}" catchtap="none">
+          <view class="showbox" bindtap="">
+            <image src="../../../images/check.png"></image>
+            <view class="showtitle">选择此商家</view>
+            <view class="showtext">选择该商家报价，点击空白处取消</view>
+            <view class="showbtn">提交订单</view>
+          </view>
+        </view>
+
+
+    </view>
+  </block>
+  <view class="btn" bindtap="qxbtn">取消预约</view>
+</view>

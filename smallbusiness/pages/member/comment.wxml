@@ -1,0 +1,86 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">我的评论</view>
+</cu-custom>
+<view class="page-view">
+  <block wx:if="{{list.length==0}}">
+    <view class="none-data">
+      <view class="no-data-img" style="background:url({{staticurl}}no-data.png) no-repeat;"></view>
+      <text class="no-data-text">暂无数据</text>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="comment-view">
+      <view class="comment-list menu card-menu margin-top" style="display:none;">
+        <view class="list-item flex cu-item" wx:for="{{commentList}}" wx:key="commentList">
+          <view class="item-avatar"><image src="{{item.photo}}"></image></view>
+          <view class="item-info margin-left">
+            <view class="info-user">
+              <view class="info-username">{{item.shop_name}}</view>
+              <view class="flex align-center justify-between">
+                <view class="item-rank">
+                  <text class="cuIcon-favorfill {{item.star>star?'thumb-color':'gray'}} rank-star" wx:for="{{5}}" wx:for-index="star" wx:for-item="starItem" wx:key="star"></text>
+                </view>
+                <view><text class="info-date">{{item.date}}</text></view>
+              </view>
+            </view>
+            <view class="info-content {{item.showAll?'':'text-hiden'}}">
+              {{item.contents}}
+            </view>
+            <view class="read-all" bindtap="readAll" data-showall="{{item.showAll}}" data-id="{{item.dianping_id}}" wx:if="{{item.contents.length>=72}}">{{item.showAll?'收起':'阅读全部'}}</view>
+            <!-- 评论图片 -->
+            <view class="info-image">
+              <view class="img fl" wx:for="{{item.imageList}}" wx:key="imageList" wx:for-item="image">
+                <image bindtap="preview" data-src="{{image}}" data-urls="{{item.imageList}}" src="{{image}}"></image>
+              </view>
+            </view>
+            <!-- 店主回复 -->
+            <view class="info-reply" wx:if="{{item.is_reply}}">
+              <view class="store-reply">商家回复</view>
+              <view class="reply-content">{{item.reply}}</view>
+              <view class="reply-date">{{item.reply_date}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="comment-list menu card-menu margin-top">
+          <view class="list-item flex" wx:for="{{commentList}}" wx:key="commentList">
+            <view class="item-avatar"><image src="{{item.photo}}"></image></view>
+            <view class="item-info margin-left">
+              <view class="info-user">
+                <view class="info-username">{{item.shop_name}}</view>
+                <view class="rank-view flex align-center justify-between">
+                  <view class="item-rank">
+                    <text class="cuIcon-favorfill {{item.star>star?'thumb-color':'gray'}} rank-star" wx:for="{{5}}" wx:for-index="star" wx:for-item="starItem" wx:key="star"></text>
+                  </view>
+                  <view><text class="info-date">{{item.date}}</text></view>
+                </view>
+              </view>
+              <view class="info-content {{item.showAll?'':'text-hiden'}}">
+                {{item.contents}}
+              </view>
+              <view class="read-all" bindtap="readAll" data-showall="{{item.showAll}}" data-id="{{item.dianping_id}}" wx:if="{{item.contents.length>=72}}">{{item.showAll?'收起':'阅读全部'}}</view>
+              <!-- 评论图片 -->
+              <view class="info-image">
+                <view class="img fl" wx:for="{{item.imageList}}" wx:key="imageList" wx:for-item="image">
+                  <image bindtap="preview" data-src="{{image}}" data-urls="{{item.imageList}}" src="{{image}}"></image>
+                </view>
+              </view>
+              <!-- 店主回复 -->
+              <view class="info-reply" wx:if="{{item.is_reply}}">
+                <view class="store-reply">商家回复</view>
+                <view class="reply-content">{{item.reply}}</view>
+                <view class="reply-date">{{item.reply_date}}</view>
+              </view>
+              <!-- 赞和踩 -->
+              <!-- <view class="info-point flex justify-end">
+                <view class="point-like" bindtap="isLike" data-id="{{item.id}}"><text class="cuIcon-appreciate{{item.isLike?'fill cur':''}}"></text>{{item.like?item.like:0}}</view>
+                <view class="point-unlike" bindtap="isUnLike" data-id="{{item.id}}"><text class="cuIcon-appreciate{{item.isUnLike?'fill cur':''}}"></text>{{item.unLike?item.unLike:0}}</view>
+              </view> -->
+            </view>
+          </view>
+      </view>
+
+    </view>
+  </block>
+</view>

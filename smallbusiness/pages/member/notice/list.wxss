@@ -1,0 +1,4 @@
+.cu-list.menu-avatar>.cu-item .content{left:40rpx;width: calc(100% - 40rpx - 120rpx);}
+.cu-list.menu-avatar>.cu-item .flex .text-cut { max-width: fit-content;}
+.cu-item {position: relative;}
+.status{position: absolute;width: 10rpx;height: 10rpx;background-color: red;border-radius: 50%;right: 10rpx;top: 10rpx;}

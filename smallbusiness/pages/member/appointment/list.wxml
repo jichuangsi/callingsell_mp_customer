@@ -1,0 +1,66 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">我的预约</view>
+</cu-custom>
+<view class="page-view">
+  <scroll-view scroll-x class="bg-white nav text-center flex justify-center">
+    <view class="cu-item {{1==TabCur?' cur':''}}" bindtap="tabSelect" data-id="1">
+      <view class="tab-item">当前预约</view>
+    </view>
+    <view class="cu-item {{2==TabCur?' cur':''}}" bindtap="tabSelect" data-id="2">
+      <view class="tab-item">历史预约</view>
+    </view>
+  </scroll-view>
+  <block wx:if="{{TabCur==1}}">
+    <view class="list-view">
+      <view class="list-item bg-white" wx:for="{{list}}" wx:key="list">
+        <view class="list-item-info">
+          <view class="flex justify-between align-center">
+            <view class="item-head">想要购买的商品</view>
+            <view class="item-state">{{item.status==0?'抢单中':'抢单成功'}}</view>
+          </view>
+        </view>
+        <view class="list-item-info">
+          <view class="flex justify-between align-center">
+            <view class="item-good">{{item.content}}</view>
+          </view>
+          <view class="flex justify-between align-center">
+            <view class="item-good">区间价格（元）</view>
+            <view class="item-num">{{item.min_price}} 一 {{item.max_price}}</view>
+          </view>
+          <!-- <view class="flex justify-between align-center">
+            <view class="item-good">配送费</view>
+            <view class="item-num">￥{{item.logistic}}</view>
+          </view> -->
+        </view>
+        <view class="get-order-btn" bindtap="_getcurrent" data-id="{{item.id}}" wx:if="{{item.status==0}}">查看预约</view>
+        <view class="get-order-btn" bindtap="_getOrder" data-id="{{item.id}}" wx:if="{{item.status!=0}}">查看订单</view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="list-view">
+      <view class="list-item bg-white" wx:for="{{list}}" wx:key="list">
+        <view class="list-item-info">
+          <view class="flex justify-between align-center">
+            <view class="item-head">想要购买的商品</view>
+            <view class="item-state">{{item.status==8?'已完成':'已取消'}}</view>
+          </view>
+        </view>
+        <view class="list-item-info">
+          <view class="flex justify-between align-center">
+            <view class="item-good">{{item.content}}</view>
+          </view>
+          <view class="flex justify-between align-center">
+            <view class="item-good">区间价格（元）</view>
+            <view class="item-num">{{item.min_price}} 一 {{item.max_price}}</view>
+          </view>
+          <!-- <view class="flex justify-between align-center">
+            <view class="item-good">配送费</view>
+            <view class="item-num">￥{{item.logistic}}</view>
+          </view> -->
+        </view>
+        <view class="get-order-btn" bindtap="_getOrder" data-id="{{item.id}}">查看订单</view>
+      </view>
+    </view>
+  </block>
+</view>

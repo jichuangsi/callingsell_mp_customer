@@ -1,0 +1,17 @@
+.map-view{position: relative;z-index: 1;}
+.list-view{
+  position: fixed;bottom: 0;z-index: 2;width: 100%;background: #fff; height: 170rpx;
+  transition:height 1s;
+}
+.list-item{padding-bottom:10rpx;}
+.list-item+.list-item{padding-top:10rpx;margin-top: 10rpx;border-top:1rpx solid #ccc}
+.item-store{ font-size: 32rpx; font-weight: bold; color: #414141; line-height: 57rpx;}
+.item-text{font-size: 24rpx;color: var(--black);}
+.item-range{ margin-top: 10rpx; font-size: 28rpx; color: #C02C38;}
+.item-btn{ padding:10rpx 20rpx; margin-top: 10rpx;color:#fff;background: #C02C38;border-radius: 35rpx;}
+
+.btn-view{ position: fixed; z-index: 3; bottom: 170rpx; width: 100%;transition:bottom 1s;}
+.moreBtn{width:150rpx;height:60rpx;line-height: 70rpx; text-align: center;background:#fff;margin: 0 auto; border-radius: 10rpx 10rpx 0 0;}
+.btn-view text{ display: inline-flex; width:38rpx;height:38rpx; font-weight: bold;border: 2px solid #ccc; border-radius: 50%;}
+
+

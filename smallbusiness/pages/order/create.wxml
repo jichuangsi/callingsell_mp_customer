@@ -1,0 +1,139 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">创建订单</view>
+</cu-custom>
+<view class="page-view">
+  <view class="cu-list menu sm-border select-address" data-type="address" bindtap="showModal">
+    <view class="cu-item arrow">
+      <view class="title">
+        <text class="text-black">{{postData.addressid?addressinfo.province+addressinfo.city+addressinfo.area:'暂未获取到收货地址'}}</text>
+      </view>
+      <view class="content">
+        <text class="text-black">{{postData.addressid?addressinfo.addr:'请选择收货地址'}}</text>
+      </view>
+      <view class="title">
+        <text class="text-black"><block wx:if="{{postData.addressid}}">{{addressinfo.name}} {{addressinfo.mobile}}</block></text>
+      </view>
+    </view>
+  </view>
+  <view class="cu-modal bottom-modal address-modal {{selectAddressModal?'show':''}}" > <!-- catchtouchmove='ture' -->
+    <view class="cu-dialog">
+      <view class="cu-bar bg-white flex justify-end">
+        <view class="content">请选择地址</view>
+        <view class="action" bindtap="hideModal" data-type="address">
+          <text class="cuIcon-close text-gray"></text>
+        </view>
+      </view>
+      <view class="padding">
+        <view class="address-list">
+          <scroll-view scroll-y="true" bindscrolltoupper="" bindscrolltolower="" bindscroll="">
+            <block wx:for="{{address}}" wx:key="address">
+            <view class="list-item flex justify-between align-center bg-white">
+              <!-- <view class="checkbox-view" bindtap="selectAddress" data-id="{{item.addr_id}}">
+                <checkbox-group><checkbox class="round thumb-color" value="{{item.addr_id}}"></checkbox></checkbox-group>
+              </view> -->
+              <view class="address-view" bindtap="selectAddress" data-id="{{item.addr_id}}">
+                <view class="contact">{{item.name}} {{item.mobile}}</view>
+                <view class="text-cut address margin-top-xs">{{item.addr}}</view>
+              </view>
+              <view class="edit-view" bindtap="editAddress" data-id="{{item.addr_id}}"><text class="cuIcon-post"></text></view>
+            </view>
+            </block>
+          </scroll-view>
+        </view>
+        <view bindtap="{{0?'':'goAddAddress'}}" class="btn-view margin-top">{{0?'确定':'新增地址'}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="pay-type cu-list menu sm-border" wx:if="{{!Distributionstatus}}">
+    <view class="cu-item tibox">
+      <view class="content">
+        <text class="text-black tishi">配送位置超出配送范围，请修改地址</text>
+      </view>
+    </view>
+  </view>
+  <view class="pay-type cu-list menu sm-border" data-type="pay" bindtap="showModal">
+    <view class="cu-item arrow">
+      <view class="content">
+        <text class="text-black">支付方式</text>
+        <text class="text-black type-text fr">{{payname}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="cu-modal bottom-modal paytype-modal {{selectPayTypeModal?'show':''}}">
+    <view class="cu-dialog">
+      <view class="cu-bar bg-white">
+        <view class="action text-gray" bindtap="hideModal" data-type="buy">取消</view>
+        <view class="action text-thumb" bindtap="selectPayType">确定</view>
+      </view>
+      <view>
+        <picker-view indicator-style="height: 50px;" style="width: 100%; height: 200px;" value="{{value}}" bindchange="PickerChange" bindpickend="bindpickend">
+          <picker-view-column>
+            <!-- <view wx:for="{{payway}}" style="line-height: 50px" value="{{item.payment_id}}">{{item.name}}</view> -->
+            <view wx:for="{{payway}}" style="line-height: 50px" value="{{item.code}}" data-code="{{item.code}}">{{item.payname}}</view>
+          </picker-view-column>
+        </picker-view>
+      </view>
+    </view>
+  </view>
+  <view class="order-goods margin-top padding-sm">
+    <view class="good-item">
+      <view class="store flex align-center">
+        <view class="storeName">{{store.shop_name}}</view>
+      </view>
+      <block wx:for="{{goods}}" wx:key="goods">
+      <view class="goods flex align-center">
+        <view class="goodspec">
+          <view class="goodimg"><image src="{{item.photo}}"></image></view>
+          <view class="title">{{item.product_name}}</view>
+          <view class="spec text-cut">{{item.option_name}}</view>
+          <view class="num">x{{item.num}}</view>
+          <view class="price"><text class="text-price">{{item.cost_price}}</text><text class="text-price">{{item.price}}</text></view>
+        </view>
+      </view>
+      </block>
+      <view class="otherFee margin-bottom">
+        <view class="packing">
+          <view>包装费</view>
+          <view class="text-price">{{totaltablewareprice?totaltablewareprice:0}}</view>
+        </view>
+        <view class="delivery">
+          <view>配送费</view>
+          <view class="text-price">{{store.logistics}}</view>
+        </view>
+        <view class="newUser" wx:if="{{newMoney>0}}">
+          <view>新人立减</view>
+          <view>- <text class="text-price">{{newMoney}}</text></view>
+        </view>
+        <view class="newUser" wx:if="{{fullReduce>0}}">
+          <view>满减优惠</view>
+          <view>- <text class="text-price">{{fullReduce}}</text></view>
+        </view>
+      </view>
+      <view class="total-price padding-top">
+        <text class="cost-text">商品小计</text>
+        <text class="text-price total-cost text-bold text-thumb">{{totalprice}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="remarks margin-top bg-white">
+    <view class="remarks-head">备注</view>
+    <view class="text-area ">
+      <view class="cu-form-group">
+        <textarea name="content" id="content" maxlength="202" data-type="content" value="{{postData.content}}" bindinput="onTextAreaChange" placeholder="备注一下，以便更好的提供服务。"></textarea>
+      </view>
+      <view class="limit-info">
+        {{contentLength}} / {{maxLength}}
+      </view>
+    </view>
+  </view>
+</view>
+<view class="bottom-btn-view">
+  <view class="bottom-btn flex justify-center align-center">
+    <view class="info-cost bg-black grid col-1 ">
+      <view class="text-cost flex align-end">应付：<text class="text-price">{{totalprice}}</text></view>
+      <view class="text-benefit">已优惠 <text class="text-price">{{fullReduce?fullReduce:0}}</text></view>
+    </view>
+    <view class="go-pay bg-thumb" bindtap="goPay">去支付</view>
+  </view>
+</view>
+

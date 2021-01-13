@@ -1,0 +1,21 @@
+
+.title{margin:0 0 10rpx 20rpx;font-size:32rpx;color:#333;font-weight: bold;}
+.page-view{padding-bottom: 100rpx;background: #F9F9F9;}
+.headView{padding-bottom:20rpx;background: var(--white);}
+.headView .avatar{margin:20rpx 0;padding:0 30rpx;}
+.headView .cu-tag.badge{top:auto;bottom:-10rpx;left:auto;right:auto;}
+.headView .username{font-size:36rpx;color:#333;flex:10;margin-left:30rpx;}
+.headView .dynamic{padding-top:10rpx;}
+.headView .dynamic view{font-size: 32rpx;color:#666;text-align:center;}
+.headView .dynamic text{font-size: 42rpx;color:#333333;font-weight: bold;}
+/*content-view*/
+.content-view{padding:30rpx 30rpx 0 30rpx;}
+.content-view .cu-list.grid.no-border{padding-bottom: 0;}
+.content-view .order,.content-view .server,.content-view .other{margin:0 auto 20rpx auto;padding:20rpx 0;width:690rpx;background: #fff;border-radius: 20rpx;}
+.content-view .order{border-radius: 20rpx;}
+.content-view .server{}
+.content-view .other{}
+
+
+
+

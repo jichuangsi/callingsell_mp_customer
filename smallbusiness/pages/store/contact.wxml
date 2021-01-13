@@ -1,0 +1,13 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">联系客服</view>
+</cu-custom>
+<view class="page-view margin">
+  <view class="cu-form-group">
+    <view class="title">客服电话</view>
+    <view bindtap="goPhone" data-phone="{{phone}}">{{phone}}</view>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">联系邮箱</view>
+    <text selectable='true'>{{email}}</text>
+  </view>
+</view>

@@ -1,0 +1,14 @@
+page{background: #fff;}
+.item-title{margin-bottom:10rpx;font-weight: bold;font-size: 32rpx;}
+.title{font-size: 28rpx;}
+.grade,.grade-content,.image{background: #fff;padding: 30rpx 30rpx 10rpx 30rpx;}
+.grade-content{margin-top: 20rpx;}
+.grade .cu-form-group{min-height: 60rpx;justify-content: start;}
+.cuIcon-favorfill{margin-right: 10rpx;}
+.content .cu-form-group{padding-top:20rpx;}
+.cu-form-group+.cu-form-group{padding-top:0;border-top:none;}
+.cu-form-group textarea{padding:20rpx 30rpx;margin: 20rpx 0 30rpx;height:200rpx;background: #f8f8f8!important;}
+.image .cu-form-group{padding-top:20rpx;}
+
+.submit-btn{bottom: 70rpx;}
+

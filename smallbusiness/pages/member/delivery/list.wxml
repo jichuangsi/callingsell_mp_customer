@@ -1,0 +1,6 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">拎手榜</view>
+</cu-custom>
+<view class="page-view">
+
+</view>

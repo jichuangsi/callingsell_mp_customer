@@ -1,0 +1,7 @@
+.page-view{padding:30rpx;}
+.cu-form-group { border-radius: 10rpx;}
+.cu-form-group+.cu-form-group {	border-top: none;margin-top: 30rpx;}
+.cu-form-group .title {	font-size: 28rpx;color:var(--black);min-width: calc(4em + 30rpx);}
+.submit-btn{margin: 0;}
+
+

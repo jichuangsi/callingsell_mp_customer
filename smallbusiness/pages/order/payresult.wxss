@@ -1,0 +1,7 @@
+.page-view{padding:30rpx;}
+.pay-message{font-size: 32rpx;color:var(--black); text-align: center;}
+.btn-view{margin-top:100rpx;}
+.btn-view view{flex:1;height: 90rpx;line-height: 90rpx;border-radius: 10rpx;text-align: center;}
+.check-order{background: var(--thumb-color);color: white;}
+.go-index{background: white;color: var(--hex-999999);border:1px solid var(--hex-B5B5B5);}
+.check-order+.go-index{margin-left:50rpx;}

@@ -1,0 +1,53 @@
+@import "/app.wxss";
+.cartView{width: 690rpx;margin: 26rpx auto 0 auto;}
+/*购物车列表*/
+.cartView .cartList{padding: 15rpx;background: var(--white);border-radius: 20rpx;min-height:380rpx;}
+.cartList .listItem{position: relative;}
+/*购物车列表 - 商店相关*/
+.listItem .store{height: 62rpx;line-height: 62rpx;}
+.listItem .selectStore,.listItem .selectGood{flex: .6;}
+/* .listItem .selectStore text{font-size:36rpx;} */
+.listItem .storeName{flex: 6;color:#343434;}
+.listItem .clearStore{flex:1.2;color:#a9a9a9}
+/*购物车列表 - 商品相关*/
+.listItem .goods{margin: 10rpx 0 30rpx 0;}
+.listItem .goodspec{flex: 7.2;position: relative;}
+.goodspec .goodimg{float:left;width: 120rpx;height: 120rpx;margin-right: 26rpx;}
+.goodspec .goodimg image{width:120rpx;height: 120rpx;}
+.goodspec .goodimg:after{clear: both;}
+.goodspec .title{color:#343434;font-size: 28rpx;font-weight: bold;}
+.goodspec .spec{color:#9A9A9A;font-size: 22rpx;}
+.goodspec .num{display: inline-block;position: absolute;bottom: 0;color:#9A9A9A;}
+.goodspec .price{position: absolute;bottom: 0;right: 0;}
+.goodspec .price text{font-weight: bold;}
+/* .goodspec .price text:nth-child(1){color:#9A9A9A;margin-right: 20rpx;text-decoration: line-through;} */
+.goodspec .price .realprice{margin-right: 10px;}
+/*包装费、配送费、优惠相关*/
+.listItem .otherFee{margin: 0 13rpx 0 57rpx;padding-bottom:30rpx;width: 580rpx;}
+.listItem .otherFee{border-bottom:1rpx solid #f5f5f5;}
+.otherFee .packing,.otherFee .delivery,.otherFee .newUser{height: 44rpx;}
+/* .otherFee .packing{ margin: 0 10rpx;} */
+.otherFee .packing view:nth-child(1){display: inline-block;color:#333333;font-size: 28rpx;}
+.otherFee .packing view:nth-child(2){float:right;font-size: 32rpx;font-weight: bold;}
+/* .otherFee .delivery{} */
+.otherFee .delivery view:nth-child(1){display: inline-block;color:#333333;font-size: 28rpx;}
+.otherFee .delivery view:nth-child(2){float:right;font-size: 32rpx;font-weight: bold;}
+/* .otherFee .newUser{} */
+.otherFee .newUser view:nth-child(1){display: inline-block;color:#333333;font-size: 28rpx;}
+.otherFee .newUser view:nth-child(2){float:right;font-size: 32rpx;font-weight: bold;color: #C02C38;}
+/* .otherFee .newUser text{} */
+/*去支付*/
+.listItem .goPay{margin: 30rpx 13rpx 30rpx 57rpx;width: 580rpx;}
+.goPay .benefit {font-size: 28rpx;color: #333;}
+.goPay .benefit text{font-size: 28rpx;font-weight: bold; color: #C02C38;}
+.benefit .text-price{margin-left: 10rpx;}
+.goPay .totalPrice,.goPay .goPayBtn{display: inline-block;height:72rpx;line-height:72rpx;}
+.goPay .totalPrice{padding:0 20rpx;max-width:35%;font-size: 38rpx;font-weight:bold;color: #c02c38;background: #FFEDEE;border-radius: 10rpx 0 0 10rpx;text-align: center;}
+.goPay .goPayBtn{width:150rpx;font-size: 28rpx;color:#fff;background: #C02C38;border-radius: 0px 10rpx 10rpx 0px;text-align:center;}
+/*猜你喜欢*/
+.storeList .guessTitle{font-size: 32rpx;font-weight: bold;color: #333333;display: table;width: auto;white-space: nowrap;border-spacing: 70rpx 0;margin:20rpx 40rpx 20rpx 40rpx;}
+.storeList .guessTitle::before,.storeList .guessTitle::after{display: table-cell;content: "";width: 50%;background: linear-gradient(#ccc, #ccc) repeat-x center;background-size: 1rpx 1rpx;}
+@import "../template/storelist.wxss";
+
+
+

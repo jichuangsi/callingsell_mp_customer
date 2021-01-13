@@ -1,0 +1,34 @@
+<cu-custom bgColor="bg-white" isBack="true">
+  <view slot="content">我的收藏</view>
+</cu-custom>
+<view class="page-view">
+  <block wx:if="{{list.length==0}}">
+    <view class="none-data">
+      <view class="no-data-img" style="background:url({{staticurl}}no-data.png) no-repeat;"></view>
+      <text class="no-data-text">暂无数据</text>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="cu-list menu card-menu margin-top">
+      <view class="cu-item" wx:for="{{list}}" wx:key="collect">
+        <view class="cu-avatar" style="background-image:url({{item.photo}});" bindtap="goGoodDeatil" data-url="/pages/store/good/index?shopid={{item.shop_id}}&goodid={{item.product_id}}&goodIndex={{index}}&cateindex={{cateindex}}"></view>
+        <view class="content" bindtap="goGoodDeatil" data-url="/pages/store/good/index?shopid={{item.shop_id}}&goodid={{item.product_id}}&goodIndex={{index}}&cateindex={{cateindex}}">
+          <view class="text-black good-title text-cut">{{item.product_name}}</view>
+          <view class="text-sm flex tags">
+            <block>
+              <text class="cu-tag line-thumb">仅剩{{item.num}}份</text>
+            </block>
+          </view>
+          <view class="text-sales">
+            <text>售 {{item.sold_num}}</text>
+          </view>
+          <view class="good-price">
+            <text class="text-price text-thumb now-price">{{item.price}}</text>
+            <text class="text-price market-price">{{item.cost_price}}</text>
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </block>
+</view>

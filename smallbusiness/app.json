@@ -1,0 +1,59 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/member/index",
+    "pages/store/index",
+    "pages/store/list",
+    "pages/task/index",
+    "pages/cart/index",
+    "pages/store/good/index",
+    "pages/order/detail",
+    "pages/order/subscribedetail",
+    "pages/store/feedback",
+    "pages/store/contact",
+    "pages/member/setting",
+    "pages/member/agreement",
+    "pages/member/agreement1",
+    "pages/member/address/index",
+    "pages/member/address/checkindex",
+    "pages/member/address/post",
+    "pages/member/server/nearby",
+    "pages/member/server/statistics",
+    "pages/member/delivery/join",
+    "pages/member/order",
+    "pages/order/create",
+    "pages/order/payresult",
+    "pages/member/joinus/index",
+    "pages/member/joinus/store",
+    "pages/member/joinus/stall",
+    "pages/member/appointment/list",
+    "pages/member/appointment/currentlist",
+    "pages/member/appointment/index",
+    "pages/index/search",
+    "pages/member/collect",
+    "pages/member/follow",
+    "pages/member/comment",
+    "pages/member/comment/index",
+    "pages/member/comment/post",
+    "pages/member/notice/list",
+    "pages/member/notice/detail",
+    "pages/member/joinus/range",
+    "pages/member/delivery/list"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Title",
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "white"
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置将用于小程序使用"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

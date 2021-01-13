@@ -1,0 +1,11 @@
+<cu-custom bgColor="bg-white">
+  <view slot="content">支付结果</view>
+</cu-custom>
+<view class="page-view">
+  <view style="background:url({{staticurl}}pay-success.png);width:300rpx;height:300rpx;margin:120rpx auto 50rpx auto;"></view>
+  <view class="pay-message">支付成功</view>
+  <view class="flex justify-around btn-view">
+    <view class="check-order" bindtap="goUrl" data-type="checkOrder">查看订单</view>
+    <view class="go-index" bindtap="goUrl" data-type="goIndex">返回首页</view>
+  </view>
+</view>

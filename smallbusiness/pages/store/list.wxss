@@ -1,0 +1,2 @@
+@import "../template/storelist.wxss";
+page{background:#F9F9F9;}

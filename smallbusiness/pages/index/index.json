@@ -1,0 +1,10 @@
+{
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "store":"/pages/store/home",
+    "task":"/pages/task/home",
+    "subscribe":"/pages/task/subscribe",
+    "cart":"/pages/cart/home",
+    "member":"/pages/member/home"
+  }
+}

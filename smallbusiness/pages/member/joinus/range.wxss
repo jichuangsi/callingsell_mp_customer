@@ -1,0 +1,8 @@
+.map-view{position: relative;z-index: 1;}
+.silder-view{position: fixed; right:0;left:0; bottom:10vh; z-index: 2; width: 690rpx; height:90rpx;margin:0 auto;background: rgba(0,0,0,.3);border-radius: 32rpx;}
+.silder-view .text-info{flex:1;text-align:center; color:#fff;}
+.silder-view slider{flex:3;display: inline-block;width:500px;}
+.silder-view slider::after{color:#fff;}
+
+.btn-view{height:120rpx;}
+.btn-view view{ padding: 0 180rpx; height: 70rpx;}
